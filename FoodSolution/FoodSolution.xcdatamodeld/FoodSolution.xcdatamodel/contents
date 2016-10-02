@@ -1,4 +1,59 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Automatic">
+    <entity name="CoacheeHistory" syncable="YES">
+        <attribute name="action" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coachName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="CoachingQuestionAnswer" syncable="YES">
+        <attribute name="columnID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numberQA" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="questionID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="textAnswer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tickAnswer" optional="YES" attributeType="Boolean" syncable="YES"/>
+    </entity>
+    <entity name="CoachingSession" syncable="YES">
+        <attribute name="action" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="area" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cdCapabilityTeamEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cdCapabilityTeamName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cdCapabilityTeamPosition" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coacheeEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coacheeName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coacheePosition" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coachID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coachingGuideline" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="coachName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="distributor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstManagerEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstManagerName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstManagerPosition" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="secondManagerEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="secondManagerName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="secondManagerPosition" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="store" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="SyncSession" syncable="YES">
+        <attribute name="action" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coachName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="csession" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="UserData" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="position" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CoacheeHistory" positionX="-27" positionY="198" width="128" height="90"/>
+        <element name="CoachingQuestionAnswer" positionX="-18" positionY="144" width="128" height="135"/>
+        <element name="CoachingSession" positionX="-27" positionY="54" width="128" height="375"/>
+        <element name="SyncSession" positionX="-27" positionY="198" width="128" height="105"/>
+        <element name="UserData" positionX="-45" positionY="72" width="128" height="105"/>
+    </elements>
 </model>

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        FIRApp.configure()
         // Override point for customization after application launch.
         return true
     }
@@ -105,6 +108,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 abort()
             }
         }
+    }
+    
+    
+    class func getAppDelegate() -> AppDelegate {
+        return UIApplication.sharedApplication().delegate as! AppDelegate
+    }
+    
+    
+    func getStringValueFormattedAsCurrency(value: String) -> String {
+        let currencyCode = "eur"
+        let numberFormatter = NSNumberFormatter()
+        numberFormatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        numberFormatter.currencyCode = currencyCode
+        numberFormatter.maximumFractionDigits = 2
+        
+        let formattedValue = numberFormatter.stringFromNumber(NSNumberFormatter().numberFromString(value)!)
+        return formattedValue!
+    }
+    
+    
+    func getDocDir() -> String {
+        return NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
     }
 
 }
