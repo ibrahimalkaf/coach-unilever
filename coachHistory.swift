@@ -111,6 +111,31 @@ class coachHistory: UIViewController,UITableViewDelegate, UITableViewDataSource 
             //bersihin nsuserfasa dulu
             self.performSegueWithIdentifier("toFASA", sender: nil)
         }
+        else if coachingGuideline! == "3"{
+            
+            //bersihin nsuserfasa dulu
+            self.performSegueWithIdentifier("toASMPush", sender: nil)
+        }
+        else if coachingGuideline! == "4"{
+            
+            //bersihin nsuserfasa dulu
+            self.performSegueWithIdentifier("toASMPull", sender: nil)
+        }
+        else if coachingGuideline! == "5"{
+            
+            //bersihin nsuserfasa dulu
+            self.performSegueWithIdentifier("toDTS", sender: nil)
+        }
+        else if coachingGuideline! == "6"{
+            
+            //bersihin nsuserfasa dulu
+            self.performSegueWithIdentifier("toSR", sender: nil)
+        }
+        else if coachingGuideline! == "7"{
+            
+            //bersihin nsuserfasa dulu
+            self.performSegueWithIdentifier("toRSM", sender: nil)
+        }
     }
 
     /*

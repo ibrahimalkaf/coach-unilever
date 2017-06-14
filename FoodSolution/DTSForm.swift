@@ -21,62 +21,114 @@ class DTSForm : FormViewController {
     var distributor: String = ""
     var area: String = ""
     
-    var dsr_sebelum_1: Bool = false
-    var dsr_sebelum_1r: String = ""
-    var dsr_sebelum_2: Bool = false
-    var dsr_sebelum_2r: String = ""
-    var dsr_sebelum_3: Bool = false
-    var dsr_sebelum_3r: String = ""
-    var dsr_sebelum_4a: Bool = false
-    var dsr_sebelum_4ar: String = ""
-    var dsr_sebelum_4b: Bool = false
-    var dsr_sebelum_4br: String = ""
-    var dsr_sebelum_4c: Bool = false
-    var dsr_sebelum_4cr: String = ""
-    var dsr_sebelum_4d: Bool = false
-    var dsr_sebelum_4dr: String = ""
-    var dsr_sebelum_4e: Bool = false
-    var dsr_sebelum_4er: String = ""
+    var dts_sebelum_1a: Bool = false
+    var dts_sebelum_1b: Bool = false
+    var dts_sebelum_1c: Bool = false
+    var dts_sebelum_1d: Bool = false
+    var dts_sebelum_1e: Bool = false
     
-    var dsr_saat_1: Set<String> = []
-    var dsr_saat_2: Set<String> = []
-    var dsr_saat_3: Set<String> = []
-    var dsr_saat_4: Set<String> = []
-    var dsr_saat_5: Set<String> = []
-    var dsr_saat_6: Set<String> = []
-    var dsr_saat_7: Set<String> = []
-    var dsr_saat_8: Set<String> = []
-    var dsr_saat_9: Set<String> = []
-    var dsr_saat_10: Set<String> = []
+    var dts_sebelum_2a: Bool = false
+    var dts_sebelum_2b: Bool = false
+    var dts_sebelum_2c: Bool = false
     
-    var dsr_setelah_1: Bool = false
-    var dsr_setelah_1r: String = ""
-    var dsr_setelah_2: Bool = false
-    var dsr_setelah_2r: String = ""
+    var dts_sebelum_2_1a: Bool = false
+    var dts_sebelum_2_2a: Bool = false
+    var dts_sebelum_2_2b: Bool = false
+    var dts_sebelum_2_2c: Bool = false
+    var dts_sebelum_2_2d: Bool = false
+    var dts_sebelum_2_2e: Bool = false
+    
+    var dts_sebelum_3_1: Bool = false
+    var dts_sebelum_3_2: Bool = false
+    
+    var dts_report_1a: Bool = false
+    var dts_report_1b: Bool = false
+    var dts_report_2a: Bool = false
+    var dts_report_2b: Bool = false
+    var dts_report_3a: Bool = false
+    var dts_report_3b: Bool = false
+    var dts_report_3c: Bool = false
+    
+    var dts_infra_1a: Bool = false
+    var dts_infra_1b: Bool = false
+    var dts_infra_1c: Bool = false
+    var dts_infra_1d: Bool = false
+    var dts_infra_1e: Bool = false
+    var dts_infra_1f: Bool = false
+    var dts_infra_1g: Bool = false
+    
+    var dts_infra_2a: Bool = false
+    var dts_infra_2b: Bool = false
+    var dts_infra_2c: Bool = false
+    var dts_infra_2d: Bool = false
+    var dts_infra_2e: Bool = false
+    
+    var dts_infra_3: Bool = false
+    
+    var dts_dsr_1a: Bool = false
+    var dts_dsr_1b: Bool = false
+    var dts_dsr_1c: Bool = false
+    
+    var dts_sebelum_1ar: String = ""
+    var dts_sebelum_1br: String = ""
+    var dts_sebelum_1cr: String = ""
+    var dts_sebelum_1dr: String = ""
+    var dts_sebelum_1er: String = ""
+    
+    var dts_sebelum_2ar: String = ""
+    var dts_sebelum_2br: String = ""
+    var dts_sebelum_2cr: String = ""
+    
+    var dts_sebelum_2_1ar: String = ""
+    var dts_sebelum_2_2ar: String = ""
+    var dts_sebelum_2_2br: String = ""
+    var dts_sebelum_2_2cr: String = ""
+    var dts_sebelum_2_2dr: String = ""
+    var dts_sebelum_2_2er: String = ""
+    
+    var dts_sebelum_3_1r: String = ""
+    var dts_sebelum_3_2r: String = ""
+    
+    var dts_report_1ar: String = ""
+    var dts_report_1br: String = ""
+    var dts_report_2ar: String = ""
+    var dts_report_2br: String = ""
+    var dts_report_3ar: String = ""
+    var dts_report_3br: String = ""
+    var dts_report_3cr: String = ""
+    
+    var dts_infra_1ar: String = ""
+    var dts_infra_1br: String = ""
+    var dts_infra_1cr: String = ""
+    var dts_infra_1dr: String = ""
+    var dts_infra_1er: String = ""
+    var dts_infra_1fr: String = ""
+    var dts_infra_1gr: String = ""
+    
+    var dts_infra_2ar: String = ""
+    var dts_infra_2br: String = ""
+    var dts_infra_2cr: String = ""
+    var dts_infra_2dr: String = ""
+    var dts_infra_2er: String = ""
+    
+    var dts_infra_3r: String = ""
+    
+    var dts_dsr_1ar: String = ""
+    var dts_dsr_1br: String = ""
+    var dts_dsr_1cr: String = ""
+    
+    var language : String = ""
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         let coachname = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.coachname) as String!
-        let coacheename = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.coacheename) as String!
-        self.coachingsession = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.coachingSession)!
+        let coacheename = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.coacheemail) as String!
+        //self.coachingsession = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.coachingSession)!
         
-        /*
-         rootRef = FIRDatabase.database().reference()
-         let itemsRef = rootRef.child("coachingSession")
-         let coachingRef = itemsRef.child(self.coachingsession)
-         
-         print(coachingRef)
-         coachingRef.observeEventType(.Value, withBlock: { snapshot in
-         print(snapshot.value)
-         coacheename = snapshot.value!["coacheeName"] as! String
-         print(coacheename)
-         }, withCancelBlock: { error in
-         print(error.description)
-         })
-         
-         */
-        
+        if let bahasa = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.language) {
+            language = bahasa as String!
+        }
         
         TextRow.defaultCellUpdate = { cell, row in
             cell.textLabel?.font = UIFont.systemFontOfSize(11)
@@ -98,6 +150,8 @@ class DTSForm : FormViewController {
         }
         
         
+        if language == "Optional(\"Bahasa\")" {
+            
         form =  Section(){
             section in
             var footer = HeaderFooterView<UITableViewHeaderFooterView>(.Class)
@@ -115,522 +169,1097 @@ class DTSForm : FormViewController {
             
             
             <<< SegmentedRow<String>("segments"){
-                $0.options = ["Sebelum", "Report", "Infrastruktur","DSR"]
-                $0.value = "Sebelum"
+                $0.options = ["GENERAL", "REPORTING", "INFRA","TEAM"]
+                $0.value = "SEBELUM"
                 }.cellUpdate({ (cell, row) in
                     cell.tintColor = .orangeColor()
+                    cell.textLabel!.numberOfLines = 2
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
                 })
             
             +++ Section()
             
-            <<< LabelRow(){
+            <<< TextRow(){
                 $0.title = "Coach\t: \(coachname)"
+                $0.disabled = true
             }
-            <<< LabelRow(){
+            <<< TextRow(){
                 $0.title = "Coachee\t: \(coacheename)"
+                $0.disabled = true
             }
             <<< TextRow(){
                 $0.tag = "distributor"
-                $0.title = "Distributor:"
+                $0.title = "Distributor\t:"
             }
             <<< TextRow(){
                 $0.tag = "area"
-                $0.title = "Area:"
+                $0.title = "Area\t\t:"
             }
             
             
-            +++ Section("Sebelum Kunjungan"){
-                $0.tag = "sebelum"
-                $0.hidden = "$segments != 'Sebelum'"
+            +++ Section("GENERAL"){
+                $0.header?.title = "SEBELUM TIBA DI DISTRIBUTOR"
+                $0.hidden = "$segments != 'SEBELUM'"
             }
             <<< LabelRow(){
-                $0.title = "Perencanaan dan persiapan (Tick if Done/Know)"
+                $0.title = "TERRITORY PROFILE"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.font = UIFont.boldSystemFontOfSize(10)
+                })
+            <<< LabelRow(){
+                $0.title = "1. Coverage"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_sebelum_1a"
+                $0.title = "\ta. Berapa banyak wholesaler yang dicover oleh distributor"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_sebelum_1ar"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_sebelum_1b"
+                $0.title = "\tb. Berapa banyak wholesaler bakery yang dicover?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_sebelum_1br"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_sebelum_1c"
+                $0.title = "\tc. Berapa banyak wholesaler Horeca yang dicover?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_sebelum_1cr"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_sebelum_1d"
+                $0.title = "\td. Berapa banyak pasar yang terdapat di territory Anda? Berapa banyak yang sudah dicover?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_sebelum_1dr"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_sebelum_1e"
+                $0.title = "\te. Berapa banyak Local Cash&Carry (LCC) yang terdapat di territory Anda? Berapa banyak yang sudah dicover?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_sebelum_1er"
+                $0.placeholder = "\tRemarks:"
+            }
+            
+            
+            <<< LabelRow(){
+                $0.title = "2. Target"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_sebelum_2a"
+                $0.title = "\ta. Berapa target full year Anda?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_sebelum_2ar"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_sebelum_2b"
+                $0.title = "\tb. Berapa RPP (rata-rata penjualan per pekan) distributor Anda?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_sebelum_2br"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_sebelum_2c"
+                $0.title = "\tc. Berapa persen pencapaiannya di minggu lalu?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_sebelum_2cr"
+                $0.placeholder = "\tRemarks:"
+            }
+            
+            <<< LabelRow(){
+                $0.title = "PENGUASAAN BRAND UFS"
                 }.cellUpdate({ (cell, row) in
                     cell.textLabel?.font = UIFont.boldSystemFontOfSize(10)
                 })
             <<< CheckRow(){
-                $0.tag = "dsr_sebelum_1"
-                $0.title = "1. Menganalisa kembali tujuan dari kunjungan"
-            }
+                $0.tag = "dts_sebelum_2_1a"
+                $0.title = "1. Apakah Anda tahu Top 10 UFS? Apa saja?"
+                }
             <<< TextRow(){
-                $0.tag = "dsr_sebelum_1r"
+                $0.tag = "dts_sebelum_2_1ar"
                 $0.placeholder = "Remarks:"
             }
             
-            <<< CheckRow(){
-                $0.tag = "dsr_sebelum_2"
-                $0.title = "2. Men-cek stock availability yang ada di gudang"
-            }
-            <<< TextRow(){
-                $0.tag = "dsr_sebelum_2r"
-                $0.placeholder = "Remarks:"
-            }
-            <<< CheckRow(){
-                $0.tag = "dsr_sebelum_3"
-                $0.title = "3. Mengetahui dan memahami promo-promo yang sedang berlangsung"
-            }
-            <<< TextRow(){
-                $0.tag = "dsr_sebelum_3r"
-                $0.placeholder = "Remarks:"
-            }
             <<< LabelRow(){
-                $0.title = "4. Mempersiapkan tools untuk kunjungan"
-            }
-            <<< CheckRow(){
-                $0.tag = "dsr_sebelum_4a"
-                $0.title = "\ta. TRC, Alat Tulis, dan Kalkulator"
-            }
-            <<< TextRow(){
-                $0.tag = "dsr_sebelum_4ar"
-                $0.placeholder = "\tRemarks:"
-            }
-            <<< CheckRow(){
-                $0.tag = "dsr_sebelum_4b"
-                $0.title = "\tb. Kartu Nama"
-            }
-            <<< TextRow(){
-                $0.tag = "dsr_sebelum_4br"
-                $0.placeholder = "\tRemarks:"
-            }
-            <<< CheckRow(){
-                $0.tag = "dsr_sebelum_4c"
-                $0.title = "\tc. Katalog Produk"
-            }
-            <<< TextRow(){
-                $0.tag = "dsr_sebelum_4cr"
-                $0.placeholder = "\tRemarks:"
-            }
-            <<< CheckRow(){
-                $0.tag = "dsr_sebelum_4d"
-                $0.title = "\td. Marketing Program"
-            }
-            <<< TextRow(){
-                $0.tag = "dsr_sebelum_4dr"
-                $0.placeholder = "\tRemarks:"
-            }
-            <<< CheckRow(){
-                $0.tag = "dsr_sebelum_4e"
-                $0.title = "\te. Price List"
-            }
-            <<< TextRow(){
-                $0.tag = "dsr_sebelum_4er"
-                $0.placeholder = "\tRemarks:"
-            }
-            
-            +++ Section("Pada saat kunjungan"){
-                $0.tag = "kunjungan"
-                $0.hidden = "$segments != 'Kunjungan'"
-            }
-            
-            <<< MultipleSelectorRow<String>() {
-                $0.tag = "dsr_saat_1"
-                $0.title = "1. Perkenalan"
-                $0.options = ["Customer ke-1", "Customer ke-2", "Customer ke-3", "Customer ke-4", "Customer ke-5", "Customer ke-6", "Customer ke-7", "Customer ke-8", "Customer ke-9", "Customer ke-10"]
+                $0.title = "2. Apakah Anda tahu target & achievement penetrasi dari produk TLC berikut :"
                 }.cellUpdate({ (cell, row) in
-                    cell.textLabel?.font = UIFont.systemFontOfSize(10)
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
                 })
-            
-            <<< MultipleSelectorRow<String>() {
-                $0.tag = "dsr_saat_2"
-                $0.title = "2. Check stock produk UFS baik yang sudah didisplay di shelf maupun di gudang"
-                $0.options = ["Customer ke-1", "Customer ke-2", "Customer ke-3", "Customer ke-4", "Customer ke-5", "Customer ke-6", "Customer ke-7", "Customer ke-8", "Customer ke-9", "Customer ke-10"]
+            <<< CheckRow(){
+                $0.tag = "dts_sebelum_2_2a"
+                $0.title = "\ta. Royco Bumbu Dasar Ayam Kuning"
                 }.cellUpdate({ (cell, row) in
-                    cell.textLabel?.font = UIFont.systemFontOfSize(10)
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
                 })
+            <<< TextRow(){
+                $0.tag = "dts_sebelum_2_2ar"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_sebelum_2_2b"
+                $0.title = "\tb. Royco Bumbu Dasar Rendang"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_sebelum_2_2br"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_sebelum_2_2c"
+                $0.title = "\tc. SariWangi Celup Jumbo"
+            }
+            <<< TextRow(){
+                $0.tag = "dts_sebelum_2_2cr"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_sebelum_2_2d"
+                $0.title = "\td. Knorr Oyster"
+                }
+            <<< TextRow(){
+                $0.tag = "dts_sebelum_2_2dr"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_sebelum_2_2e"
+                $0.title = "\te. KMP 500Gr"
+                }
+            <<< TextRow(){
+                $0.tag = "dts_sebelum_2_2er"
+                $0.placeholder = "\tRemarks:"
+            }
             
             <<< LabelRow(){
-                $0.title = "3. Presentasi"
-            }
-            
-            <<< MultipleSelectorRow<String>() {
-                $0.tag = "dsr_saat_3"
-                $0.title = "\ta. Menawarkan penambahan stock (taking order) pada customer"
-                $0.options = ["Customer ke-1", "Customer ke-2", "Customer ke-3", "Customer ke-4", "Customer ke-5", "Customer ke-6", "Customer ke-7", "Customer ke-8", "Customer ke-9", "Customer ke-10"]
-                }.cellUpdate({ (cell, row) in
-                    cell.textLabel?.font = UIFont.systemFontOfSize(10)
-                })
-            
-            <<< MultipleSelectorRow<String>() {
-                $0.tag = "dsr_saat_4"
-                $0.title = "\tb. Menawarkan penambahan SKU baru (NPI)"
-                $0.options = ["Customer ke-1", "Customer ke-2", "Customer ke-3", "Customer ke-4", "Customer ke-5", "Customer ke-6", "Customer ke-7", "Customer ke-8", "Customer ke-9", "Customer ke-10"]
-                }.cellUpdate({ (cell, row) in
-                    cell.textLabel?.font = UIFont.systemFontOfSize(10)
-                })
-            
-            <<< MultipleSelectorRow<String>() {
-                $0.tag = "dsr_saat_5"
-                $0.title = "\tc. Presentasi produk: menguasai keunggulan produk"
-                $0.options = ["Customer ke-1", "Customer ke-2", "Customer ke-3", "Customer ke-4", "Customer ke-5", "Customer ke-6", "Customer ke-7", "Customer ke-8", "Customer ke-9", "Customer ke-10"]
-                }.cellUpdate({ (cell, row) in
-                    cell.textLabel?.font = UIFont.systemFontOfSize(10)
-                })
-            
-            <<< MultipleSelectorRow<String>() {
-                $0.tag = "dsr_saat_6"
-                $0.title = "\td. Presentasi harga: menguasai produk"
-                $0.options = ["Customer ke-1", "Customer ke-2", "Customer ke-3", "Customer ke-4", "Customer ke-5", "Customer ke-6", "Customer ke-7", "Customer ke-8", "Customer ke-9", "Customer ke-10"]
-                }.cellUpdate({ (cell, row) in
-                    cell.textLabel?.font = UIFont.systemFontOfSize(10)
-                })
-            
-            <<< MultipleSelectorRow<String>() {
-                $0.tag = "dsr_saat_7"
-                $0.title = "\te. Presentasi program: menguasai program-program yang sedang berlangsung"
-                $0.options = ["Customer ke-1", "Customer ke-2", "Customer ke-3", "Customer ke-4", "Customer ke-5", "Customer ke-6", "Customer ke-7", "Customer ke-8", "Customer ke-9", "Customer ke-10"]
-                }.cellUpdate({ (cell, row) in
-                    cell.textLabel?.font = UIFont.systemFontOfSize(10)
-                })
-            
-            
-            <<< MultipleSelectorRow<String>() {
-                $0.tag = "dsr_saat_8"
-                $0.title = "4. Penutupan: merekonfirmasi hasil kunjungan (jumlah orderan, dll)"
-                $0.options = ["Customer ke-1", "Customer ke-2", "Customer ke-3", "Customer ke-4", "Customer ke-5", "Customer ke-6", "Customer ke-7", "Customer ke-8", "Customer ke-9", "Customer ke-10"]
-                }.cellUpdate({ (cell, row) in
-                    cell.textLabel?.font = UIFont.systemFontOfSize(10)
-                })
-            
-            <<< MultipleSelectorRow<String>() {
-                $0.tag = "dsr_saat_9"
-                $0.title = "5. Melakukan merchandising"
-                $0.options = ["Customer ke-1", "Customer ke-2", "Customer ke-3", "Customer ke-4", "Customer ke-5", "Customer ke-6", "Customer ke-7", "Customer ke-8", "Customer ke-9", "Customer ke-10"]
-                }.cellUpdate({ (cell, row) in
-                    cell.textLabel?.font = UIFont.systemFontOfSize(10)
-                })
-            
-            <<< MultipleSelectorRow<String>() {
-                $0.tag = "dsr_saat_10"
-                $0.title = "6. Mengisi TRC"
-                $0.options = ["Customer ke-1", "Customer ke-2", "Customer ke-3", "Customer ke-4", "Customer ke-5", "Customer ke-6", "Customer ke-7", "Customer ke-8", "Customer ke-9", "Customer ke-10"]
-                }.cellUpdate({ (cell, row) in
-                    cell.textLabel?.font = UIFont.systemFontOfSize(10)
-                })
-            
-            +++ Section("Setelah kunjungan"){
-                $0.tag = "setelah"
-                $0.hidden = "$segments != 'Setelah'"
-            }
-            <<< LabelRow(){
-                $0.title = "Finalisasi dan Evaluasi (Tick if Done/Know)"
+                $0.title = "KEMAMPUAN CHEFMANSHIP"
                 }.cellUpdate({ (cell, row) in
                     cell.textLabel?.font = UIFont.boldSystemFontOfSize(10)
                 })
             <<< CheckRow(){
-                $0.tag = "dsr_setelah_1"
-                $0.title = "1. Perkenalan"
-            }
+                $0.tag = "dts_sebelum_3_1"
+                $0.title = "1. Seberapa sering anda mengikuti training Simple Wet Sampling Dilution in Class Training yang dilakukan oleh ASMPull?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
             <<< TextRow(){
-                $0.tag = "dsr_setelah_1r"
+                $0.tag = "dts_sebelum_3_1r"
                 $0.placeholder = "Remarks:"
             }
             <<< CheckRow(){
-                $0.tag = "dsr_setelah_2"
-                $0.title = "2. Check stock produk UFS baik yang sudah \n didisplay di shelf maupun di gudang"
+                $0.tag = "dts_sebelum_3_2"
+                $0.title = "2. Berapa SKU yang anda hafal Selling Story / Kelebihannya? Sebutkan"
                 }.cellUpdate({ (cell, row) in
-                    cell.textLabel?.numberOfLines = 2
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
                 })
             <<< TextRow(){
-                $0.tag = "dsr_setelah_2r"
+                $0.tag = "dts_sebelum_3_2r"
+                $0.placeholder = "Remarks:"
+            }
+
+            
+            +++ Section("REPORTING"){
+                $0.header?.title = "DI DISTRIBUTOR (REPORT)"
+                $0.hidden = "$segments != 'REPORT'"
+            }
+
+            <<< LabelRow(){
+                $0.title = "1. Dalam monitoring tim :"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_report_1a"
+                $0.title = "\ta. Seberapa sering Anda melakukan morning dan afternoon briefing?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_report_1ar"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_report_1b"
+                $0.title = "\tb. Apakah Anda dapat menjelaskan point apa saja yang terdapat dalam wall report? \n\t*Minta DTS untuk menunjukan dan menjelaskan Wall Report yang ada di distributor"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_report_1br"
+                $0.placeholder = "\tRemarks:"
+            }
+            
+            <<< LabelRow(){
+                $0.title = "2. Memonitor kedisiplinan tim :"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_report_2a"
+                $0.title = "\ta. Berapa persen pencapaian kunjungan DSR yang sesuai dengan PJP?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_report_2ar"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_report_2b"
+                $0.title = "\tb. Berapa persen rata-rata effective call (EC) masing-masing DSR Anda? \n\t*Minta DTS untuk menunjukan dan menjelaskan konten yang ada pada TRC atau Leveredge Mobility"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_report_2br"
+                $0.placeholder = "\tRemarks:"
+            }
+            
+            <<< LabelRow(){
+                $0.title = "3. Pengembangan kapabilitas tim :"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_report_3a"
+                $0.title = "\ta. Seberapa sering Anda melakukan coaching untuk DSR?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_report_3ar"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_report_3b"
+                $0.title = "\tb. Seberapa sering Anda melakukan coaching untuk DSS?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_report_3br"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_report_3c"
+                $0.title = "\tc. Apakah Anda menggunakan aplikasi ini untuk mendokumentasikan hasil coaching tersebut? \n\t*DTS sebaiknya melakukan coaching kepada DSR 2x/minggu dan kepada DSS/OM 1x/minggu"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_report_3cr"
+                $0.placeholder = "\tRemarks:"
+            }
+            
+            +++ Section("INFRA"){
+                $0.header?.title = "DI DISTRIBUTOR (INFRASTRUKTUR)"
+                $0.hidden = "$segments != 'INFRA'"
+            }
+            <<< LabelRow(){
+                $0.title = "MANAJEMEN GUDANG & KONDISI VAN DELIVERY"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.font = UIFont.boldSystemFontOfSize(10)
+                })
+            
+            <<< LabelRow(){
+                $0.title = "1. Seberapa baik Anda mengetahui kondisi dan rencana perbaikan (bila ada) dari :"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_infra_1a"
+                $0.title = "\ta. Kondisi gudang (Racking, dinding, lantai, ceiling/plafon, dan ventilasi)"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_infra_1ar"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_infra_1b"
+                $0.title = "\tb. Perlakukan untuk produk rusak (adanya label dan pemisahan di tempat khusus)"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_infra_1br"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_infra_1c"
+                $0.title = "\tc. Penerapan FEFO di gudang"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_infra_1cr"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_infra_1d"
+                $0.title = "\td. Monitoring expiry date"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_infra_1dr"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_infra_1e"
+                $0.title = "\te. Penataan produk dalam gudang (foods dan non-foods tidak tercampur)"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_infra_1er"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_infra_1f"
+                $0.title = "\tf. Stacking produk sesuai dengan yang direkomendasikan di karton"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_infra_1fr"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_infra_1g"
+                $0.title = "\tg. Jadwal pembersihan dan perawatan gudang"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_infra_1gr"
+                $0.placeholder = "\tRemarks:"
+            }
+            
+            <<< LabelRow(){
+                $0.title = "2. Kondisi dan kebersihan Van :"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_infra_2a"
+                $0.title = "\ta. Apakah kondisi kendaraan bebas dari rembesan oli, ban botak?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_infra_2ar"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_infra_2b"
+                $0.title = "\tb. Apakah body, Atap, pintu & Lantai kendaaran bebas dari kerusakan & berfungsi baik?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_infra_2br"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_infra_2c"
+                $0.title = "\tc. Apakah bagian dalam kendaraan bebas dari basah dan lembab?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_infra_2cr"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_infra_2d"
+                $0.title = "\td. Apakah lantai Kendaraan bebas dari serpihan kasar, kaca, paku, staples?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_infra_2dr"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_infra_2e"
+                $0.title = "\te. Apakah lendaraan dalam kondisi  bebas bekas terserang hama (misal: rayap, sarang serangga /laba laba)?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_infra_2er"
+                $0.placeholder = "\tRemarks:"
+            }
+            
+            <<< CheckRow(){
+                $0.tag = "dts_infra_3"
+                $0.title = "3. Apakah Anda sebagai bisnis partner pernah mendiskusikan perbaikan ini dengan owner distributor?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_infra_3r"
                 $0.placeholder = "Remarks:"
             }
             
+            +++ Section("TEAM"){
+                $0.header?.title = "DI PASAR (dengan DSR)"
+                $0.hidden = "$segments != 'DSR'"
+            }
+            
+            <<< CheckRow(){
+                $0.tag = "dts_dsr_1a"
+                $0.title = "\ta. Apakah DSR melakukan kunjungan sesuai PJP dan mengisi TRC/LeverEdge Mobility?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_dsr_1ar"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_dsr_1b"
+                $0.title = "\tb. Saat DSR menwarkan produk, apakah Product Knowledge sesuai Selling Story?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_dsr_1br"
+                $0.placeholder = "\tRemarks:"
+            }
+            <<< CheckRow(){
+                $0.tag = "dts_dsr_1c"
+                $0.title = "\tc. Seberapa dekat relasi Anda dengan Top 10 wholesaler Anda?"
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
+            <<< TextRow(){
+                $0.tag = "dts_dsr_1cr"
+                $0.placeholder = "\tRemarks:"
+            }
+
             <<< ButtonRow("save") {row in
                 row.title = "Save"
-                row.onCellSelection(self.saveDSRCoreData)
+                row.onCellSelection(self.saveDTSCoreData)
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.textColor = UIColor.whiteColor()
+                })
+            
+        }
+        
+        if language == "Optional(\"English\")" {
+            
+            form =  Section(){
+                section in
+                var footer = HeaderFooterView<UITableViewHeaderFooterView>(.Class)
+                footer.onSetupView = {view in
+                    view.view.textLabel!.text = "**The following questions is a guidelines for you to coach\n the team to develop better in Selling Skills (Basic Call Procedure)"
+                    view.view.textLabel!.textColor = UIColor.orangeColor()
+                    view.view.textLabel?.numberOfLines = 2
+                    view.view.textLabel?.textAlignment = NSTextAlignment.Center
+                    view.view.textLabel!.font = UIFont.italicSystemFontOfSize(9)
+                }
+                footer.height = {30}
+                section.footer = footer
+                }
+                
+                
+                
+                <<< SegmentedRow<String>("segments"){
+                    $0.options = ["GENERAL", "REPORTING", "INFRA","TEAM"]
+                    $0.value = "BEFORE"
+                    }.cellUpdate({ (cell, row) in
+                        cell.tintColor = .orangeColor()
+                        cell.textLabel!.numberOfLines = 2
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    })
+                
+                +++ Section()
+                
+                <<< TextRow(){
+                    $0.title = "Coach\t: \(coachname)"
+                    $0.disabled = true
+                }
+                <<< TextRow(){
+                    $0.title = "Coachee\t: \(coacheename)"
+                    $0.disabled = true
+                }
+                <<< TextRow(){
+                    $0.tag = "distributor"
+                    $0.title = "Distributor\t:"
+                }
+                <<< TextRow(){
+                    $0.tag = "area"
+                    $0.title = "Area\t\t:"
+                }
+                
+                
+                +++ Section("GENERAL"){
+                    $0.header?.title = "BEFORE ARRIVING IN DISTRIBUTOR"
+                    $0.hidden = "$segments != 'BEFORE'"
+                }
+                <<< LabelRow(){
+                    $0.title = "TERRITORY PROFILE MASTERY"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.font = UIFont.boldSystemFontOfSize(10)
+                    })
+                <<< LabelRow(){
+                    $0.title = "1. Coverage"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_sebelum_1a"
+                    $0.title = "\ta. How many wholesaler is covered by distributor?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_sebelum_1ar"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_sebelum_1b"
+                    $0.title = "\tb. How many bakery wholesaler is covered?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_sebelum_1br"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_sebelum_1c"
+                    $0.title = "\tc. How many Horeca wholesaLer is covered?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_sebelum_1cr"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_sebelum_1d"
+                    $0.title = "\td. How many market available on your territory ? How many has been covered?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_sebelum_1dr"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_sebelum_1e"
+                    $0.title = "\te. How many Local Cash&Carry (LCC) available in your territory? How many has been covered?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_sebelum_1er"
+                    $0.placeholder = "\tRemarks:"
+                }
+                
+                
+                <<< LabelRow(){
+                    $0.title = "2. Target"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_sebelum_2a"
+                    $0.title = "\ta. What is your full-year target?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_sebelum_2ar"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_sebelum_2b"
+                    $0.title = "\tb. What is your distributor AWS (Average Weekly Sales)?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_sebelum_2br"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_sebelum_2c"
+                    $0.title = "\tc. What is the achievement percentage last week?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_sebelum_2cr"
+                    $0.placeholder = "\tRemarks:"
+                }
+                
+                <<< LabelRow(){
+                    $0.title = "UFS BRAND MASTERY"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.font = UIFont.boldSystemFontOfSize(10)
+                    })
+                <<< CheckRow(){
+                    $0.tag = "dts_sebelum_2_1a"
+                    $0.title = "1. Do you know Top 10 UFS? What are they?"
+                }
+                <<< TextRow(){
+                    $0.tag = "dts_sebelum_2_1ar"
+                    $0.placeholder = "Remarks:"
+                }
+                
+                <<< LabelRow(){
+                    $0.title = "2. Do you know the penetration target & achievement of these TLC products :"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< CheckRow(){
+                    $0.tag = "dts_sebelum_2_2a"
+                    $0.title = "\ta. Royco Bumbu Dasar Ayam Kuning"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_sebelum_2_2ar"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_sebelum_2_2b"
+                    $0.title = "\tb. Royco Bumbu Dasar Rendang"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_sebelum_2_2br"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_sebelum_2_2c"
+                    $0.title = "\tc. SariWangi Celup Jumbo"
+                }
+                <<< TextRow(){
+                    $0.tag = "dts_sebelum_2_2cr"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_sebelum_2_2d"
+                    $0.title = "\td. Knorr Oyster"
+                }
+                <<< TextRow(){
+                    $0.tag = "dts_sebelum_2_2dr"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_sebelum_2_2e"
+                    $0.title = "\te. KMP 500Gr"
+                }
+                <<< TextRow(){
+                    $0.tag = "dts_sebelum_2_2er"
+                    $0.placeholder = "\tRemarks:"
+                }
+                
+                <<< LabelRow(){
+                    $0.title = "CHEFMANSHIP SKILL"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.font = UIFont.boldSystemFontOfSize(10)
+                    })
+                <<< CheckRow(){
+                    $0.tag = "dts_sebelum_3_1"
+                    $0.title = "1. How often do you join training Simple Wet Sampling Dilution in Class Training by ASMPull?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_sebelum_3_1r"
+                    $0.placeholder = "Remarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_sebelum_3_2"
+                    $0.title = "2. How much SKU point that you memorize? Please mention the strength/Selling story"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_sebelum_3_2r"
+                    $0.placeholder = "Remarks:"
+                }
+                
+                +++ Section("REPORTING"){
+                    $0.header?.title = "AT DISTRIBUTOR (REPORT)"
+                    $0.hidden = "$segments != 'REPORT'"
+                }
+                
+                <<< LabelRow(){
+                    $0.title = "1. Regarding Team Monitoring:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_report_1a"
+                    $0.title = "\ta. How often your team do morning and afternoon briefing at the distributor?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_report_1ar"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_report_1b"
+                    $0.title = "\tb. Does your DTS team well-informed about the points on the wall report? \n\t*Ask the ASM/DTS to show and explain the Wall Report at the distributor"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_report_1br"
+                    $0.placeholder = "\tRemarks:"
+                }
+                
+                <<< LabelRow(){
+                    $0.title = "2. Monitoring Team Discipline :"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_report_2a"
+                    $0.title = "\ta. What is the percentage of average achievement of DSR visitation according to PJP in your territory?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_report_2ar"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_report_2b"
+                    $0.title = "\tb. What is the percentage of average effective call (EC) on each DSR in your territory? \n\t*Ask DTS to show and explain the contents of TRC or Leveredge Mobility"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_report_2br"
+                    $0.placeholder = "\tRemarks:"
+                }
+                
+                <<< LabelRow(){
+                    $0.title = "3. Team Capability Development:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_report_3a"
+                    $0.title = "\ta. How often do you conduct coaching for DSR?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_report_3ar"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_report_3b"
+                    $0.title = "\tb. How often do you conduct coaching for DSS?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_report_3br"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_report_3c"
+                    $0.title = "\tc. Should you use this application to document the coaching result? \n\t*DTS should conduct coaching to DSR 2x/week and to DSS/OM 1x/week"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_report_3cr"
+                    $0.placeholder = "\tRemarks:"
+                }
+                
+                +++ Section("INFRA"){
+                    $0.header?.title = "AT DISTRIBUTOR (INFRASTRUKTUR)"
+                    $0.hidden = "$segments != 'INFRA'"
+                }
+                <<< LabelRow(){
+                    $0.title = "MANAJEMEN GUDANG & KONDISI VAN DELIVERY"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.font = UIFont.boldSystemFontOfSize(10)
+                    })
+                
+                <<< LabelRow(){
+                    $0.title = "1. How well do you know the condition and repair plans (if any) of :"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_infra_1a"
+                    $0.title = "\ta. Warehouse condition (Racking, wall, floor, ceiling, and ventilation)"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_infra_1ar"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_infra_1b"
+                    $0.title = "\tb. Treatment to broken products (labeling and separation to another place)"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_infra_1br"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_infra_1c"
+                    $0.title = "\tc. FEFO implementation in warehouse"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_infra_1cr"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_infra_1d"
+                    $0.title = "\td. Monitoring expiry date"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_infra_1dr"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_infra_1e"
+                    $0.title = "\te. Warehouse product placement (separate foods and non-foods)"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_infra_1er"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_infra_1f"
+                    $0.title = "\tf. Product stacking according to recommended stacking instruction in package"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_infra_1fr"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_infra_1g"
+                    $0.title = "\tg. Warehouse Cleaning and Maintenance Schedule"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_infra_1gr"
+                    $0.placeholder = "\tRemarks:"
+                }
+                
+                <<< LabelRow(){
+                    $0.title = "2. Van condition and cleanliness :"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_infra_2a"
+                    $0.title = "\ta. Is the vehicle free from spilled oil and bald tires?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_infra_2ar"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_infra_2b"
+                    $0.title = "\tb. Is the vehicle body, ceiling, door & floor free from damage and works well?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_infra_2br"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_infra_2c"
+                    $0.title = "\tc. Is the vehicle interior wet & humid free?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_infra_2cr"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_infra_2d"
+                    $0.title = "\td. Is the vehicle floor free from splinters, flakes, glasses, nails, or stables?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_infra_2dr"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_infra_2e"
+                    $0.title = "\te. Is the vehicle free from any pests (e.g.: termite, bug, spider - and its webs)?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_infra_2er"
+                    $0.placeholder = "\tRemarks:"
+                }
+                
+                <<< CheckRow(){
+                    $0.tag = "dts_infra_3"
+                    $0.title = "3. Does you, as the business partner, ever discussed this repair with the distributor owner?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_infra_3r"
+                    $0.placeholder = "Remarks:"
+                }
+                
+                +++ Section("TEAM"){
+                    $0.header?.title = "AT THE PASAR (with DSR)"
+                    $0.hidden = "$segments != 'DSR'"
+                }
+                
+                <<< CheckRow(){
+                    $0.tag = "dts_dsr_1a"
+                    $0.title = "\ta. Does the DSR conduct visits according to PJP and fills the TRC/LeverEdge Mobility?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_dsr_1ar"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_dsr_1b"
+                    $0.title = "\tb. When DSR offers product, is the Product Knowledge corresponds the Selling Story?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_dsr_1br"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dts_dsr_1c"
+                    $0.title = "\tc. How close is your relation to your Top 10 wholesaler?"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dts_dsr_1cr"
+                    $0.placeholder = "\tRemarks:"
+                }
+                
+                <<< ButtonRow("save") {row in
+                    row.title = "Save"
+                    row.onCellSelection(self.saveDTSCoreData)
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.textColor = UIColor.whiteColor()
+                    })
+            
         }
         
         print(AppDelegate.getAppDelegate().getDocDir())
     }
     
     
-    func saveDSR(cell: ButtonCellOf<String>, row: ButtonRow) {
-        
-        
-        rootRef = FIRDatabase.database().reference()
-        let itemsRef = rootRef.child("coachingQuestionAnswer")
-        let questionanswer = itemsRef.child(self.coachingsession)
-        
-        var questionarray = [AnyObject]()
-        
-        
-        if let dsr_sebelum_1 = self.form.rowByTag("dsr_sebelum_1")?.baseValue as? Bool
-        {
-            self.dsr_sebelum_1 = dsr_sebelum_1
-        }
-        if let dsr_sebelum_1r = self.form.rowByTag("dsr_sebelum_1r")?.baseValue as? String
-        {
-            self.dsr_sebelum_1r = dsr_sebelum_1r
-        }
-        if let dsr_sebelum_2 = self.form.rowByTag("dsr_sebelum_2")?.baseValue as? Bool
-        {
-            self.dsr_sebelum_2 = dsr_sebelum_2
-        }
-        if let dsr_sebelum_2r = self.form.rowByTag("dsr_sebelum_2r")?.baseValue as? String
-        {
-            self.dsr_sebelum_2r = dsr_sebelum_2r
-        }
-        if let dsr_sebelum_3 = self.form.rowByTag("dsr_sebelum_3")?.baseValue as? Bool
-        {
-            self.dsr_sebelum_3 = dsr_sebelum_3
-        }
-        if let dsr_sebelum_3r = self.form.rowByTag("dsr_sebelum_3r")?.baseValue as? String
-        {
-            self.dsr_sebelum_3r = dsr_sebelum_3r
-        }
-        if let dsr_sebelum_4a = self.form.rowByTag("dsr_sebelum_4a")?.baseValue as? Bool
-        {
-            self.dsr_sebelum_4a = dsr_sebelum_4a
-        }
-        if let dsr_sebelum_4ar = self.form.rowByTag("dsr_sebelum_4ar")?.baseValue as? String
-        {
-            self.dsr_sebelum_4ar = dsr_sebelum_4ar
-        }
-        if let dsr_sebelum_4b = self.form.rowByTag("dsr_sebelum_4b")?.baseValue as? Bool
-        {
-            self.dsr_sebelum_4b = dsr_sebelum_4b
-        }
-        if let dsr_sebelum_4br = self.form.rowByTag("dsr_sebelum_4br")?.baseValue as? String
-        {
-            self.dsr_sebelum_4br = dsr_sebelum_4br
-        }
-        if let dsr_sebelum_4c = self.form.rowByTag("dsr_sebelum_4c")?.baseValue as? Bool
-        {
-            self.dsr_sebelum_4c = dsr_sebelum_4c
-        }
-        if let dsr_sebelum_4cr = self.form.rowByTag("dsr_sebelum_4cr")?.baseValue as? String
-        {
-            self.dsr_sebelum_4cr = dsr_sebelum_4cr
-        }
-        if let dsr_sebelum_4d = self.form.rowByTag("dsr_sebelum_4d")?.baseValue as? Bool
-        {
-            self.dsr_sebelum_4d = dsr_sebelum_4d
-        }
-        if let dsr_sebelum_4dr = self.form.rowByTag("dsr_sebelum_4dr")?.baseValue as? String
-        {
-            self.dsr_sebelum_4dr = dsr_sebelum_4dr
-        }
-        if let dsr_sebelum_4e = self.form.rowByTag("dsr_sebelum_4e")?.baseValue as? Bool
-        {
-            self.dsr_sebelum_4e = dsr_sebelum_4e
-        }
-        if let dsr_sebelum_4er = self.form.rowByTag("dsr_sebelum_4er")?.baseValue as? String
-        {
-            self.dsr_sebelum_4er = dsr_sebelum_4er
-        }
-        
-        
-        if let dsr_saat_1 = self.form.rowByTag("dsr_saat_1")?.baseValue as? Set<String>
-        {
-            self.dsr_saat_1 = dsr_saat_1
-            /*
-             for isi in dsr_saat_1 {
-             print("isi: \(isi)")
-             }*/
-        }
-        if let dsr_saat_2 = self.form.rowByTag("dsr_saat_2")?.baseValue as? Set<String>
-        {
-            self.dsr_saat_2 = dsr_saat_2
-        }
-        if let dsr_saat_3 = self.form.rowByTag("dsr_saat_3")?.baseValue as? Set<String>
-        {
-            self.dsr_saat_3 = dsr_saat_3
-        }
-        if let dsr_saat_4 = self.form.rowByTag("dsr_saat_4")?.baseValue as? Set<String>
-        {
-            self.dsr_saat_4 = dsr_saat_4
-        }
-        if let dsr_saat_5 = self.form.rowByTag("dsr_saat_5")?.baseValue as? Set<String>
-        {
-            self.dsr_saat_5 = dsr_saat_5
-        }
-        if let dsr_saat_6 = self.form.rowByTag("dsr_saat_6")?.baseValue as? Set<String>
-        {
-            self.dsr_saat_6 = dsr_saat_6
-        }
-        if let dsr_saat_7 = self.form.rowByTag("dsr_saat_7")?.baseValue as? Set<String>
-        {
-            self.dsr_saat_7 = dsr_saat_7
-        }
-        if let dsr_saat_8 = self.form.rowByTag("dsr_saat_8")?.baseValue as? Set<String>
-        {
-            self.dsr_saat_8 = dsr_saat_8
-        }
-        if let dsr_saat_9 = self.form.rowByTag("dsr_saat_9")?.baseValue as? Set<String>
-        {
-            self.dsr_saat_9 = dsr_saat_9
-        }
-        if let dsr_saat_10 = self.form.rowByTag("dsr_saat_10")?.baseValue as? Set<String>
-        {
-            self.dsr_saat_10 = dsr_saat_10
-        }
-        
-        if let dsr_setelah_1 = self.form.rowByTag("dsr_setelah_1")?.baseValue as? Bool
-        {
-            self.dsr_setelah_1 = dsr_setelah_1
-        }
-        if let dsr_setelah_1r = self.form.rowByTag("dsr_setelah_1r")?.baseValue as? String
-        {
-            self.dsr_setelah_1r = dsr_setelah_1r
-        }
-        if let dsr_setelah_2 = self.form.rowByTag("dsr_setelah_2")?.baseValue as? Bool
-        {
-            self.dsr_setelah_2 = dsr_setelah_2
-        }
-        if let dsr_setelah_2r = self.form.rowByTag("dsr_setelah_2r")?.baseValue as? String
-        {
-            self.dsr_setelah_2r = dsr_setelah_2r
-        }
-        
-        
-        
-        let question1 = QuestionObject(columnID: "", questionID: "dsr_sebelum_1", textAnswer: self.dsr_sebelum_1r, tickAnswer: self.dsr_sebelum_1)
-        questionarray.append(question1.toAnyObject())
-        
-        let question2 = QuestionObject(columnID: "", questionID: "dsr_sebelum_2", textAnswer: self.dsr_sebelum_2r, tickAnswer: self.dsr_sebelum_2)
-        questionarray.append(question2.toAnyObject())
-        
-        let question3 = QuestionObject(columnID: "", questionID: "dsr_sebelum_3", textAnswer: self.dsr_sebelum_3r, tickAnswer: self.dsr_sebelum_3)
-        questionarray.append(question3.toAnyObject())
-        
-        let question4a = QuestionObject(columnID: "", questionID: "dsr_sebelum_4a", textAnswer: self.dsr_sebelum_4ar, tickAnswer: self.dsr_sebelum_4a)
-        questionarray.append(question4a.toAnyObject())
-        
-        let question4b = QuestionObject(columnID: "", questionID: "dsr_sebelum_4b", textAnswer: self.dsr_sebelum_4br, tickAnswer: self.dsr_sebelum_4b)
-        questionarray.append(question4b.toAnyObject())
-        
-        let question4c = QuestionObject(columnID: "", questionID: "dsr_sebelum_4c", textAnswer: self.dsr_sebelum_4cr, tickAnswer: self.dsr_sebelum_4c)
-        questionarray.append(question4c.toAnyObject())
-        
-        let question4d = QuestionObject(columnID: "", questionID: "dsr_sebelum_4d", textAnswer: self.dsr_sebelum_4dr, tickAnswer: self.dsr_sebelum_4d)
-        questionarray.append(question4d.toAnyObject())
-        
-        let question4e = QuestionObject(columnID: "", questionID: "dsr_sebelum_4e", textAnswer: self.dsr_sebelum_4er, tickAnswer: self.dsr_sebelum_4e)
-        questionarray.append(question4e.toAnyObject())
-        
-        
-        for index in 1...10{
-            if dsr_saat_1.contains("Customer ke-\(index)"){
-                let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_1", textAnswer: "", tickAnswer: true)
-                questionarray.append(customer.toAnyObject())
-            }
-            else{
-                let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_1", textAnswer: "", tickAnswer: false)
-                questionarray.append(customer.toAnyObject())
-            }
-        }
-        for index in 1...10{
-            if dsr_saat_2.contains("Customer ke-\(index)"){
-                let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_2", textAnswer: "", tickAnswer: true)
-                questionarray.append(customer.toAnyObject())
-            }
-            else{
-                let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_2", textAnswer: "", tickAnswer: false)
-                questionarray.append(customer.toAnyObject())
-            }
-        }
-        for index in 1...10{
-            if dsr_saat_3.contains("Customer ke-\(index)"){
-                let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_3", textAnswer: "", tickAnswer: true)
-                questionarray.append(customer.toAnyObject())
-            }
-            else{
-                let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_3", textAnswer: "", tickAnswer: false)
-                questionarray.append(customer.toAnyObject())
-            }
-        }
-        for index in 1...10{
-            if dsr_saat_4.contains("Customer ke-\(index)"){
-                let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_4", textAnswer: "", tickAnswer: true)
-                questionarray.append(customer.toAnyObject())
-            }
-            else{
-                let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_4", textAnswer: "", tickAnswer: false)
-                questionarray.append(customer.toAnyObject())
-            }
-        }
-        for index in 1...10{
-            if dsr_saat_5.contains("Customer ke-\(index)"){
-                let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_5", textAnswer: "", tickAnswer: true)
-                questionarray.append(customer.toAnyObject())
-            }
-            else{
-                let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_5", textAnswer: "", tickAnswer: false)
-                questionarray.append(customer.toAnyObject())
-            }
-        }
-        for index in 1...10{
-            if dsr_saat_6.contains("Customer ke-\(index)"){
-                let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_6", textAnswer: "", tickAnswer: true)
-                questionarray.append(customer.toAnyObject())
-            }
-            else{
-                let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_6", textAnswer: "", tickAnswer: false)
-                questionarray.append(customer.toAnyObject())
-            }
-        }
-        for index in 1...10{
-            if dsr_saat_7.contains("Customer ke-\(index)"){
-                let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_7", textAnswer: "", tickAnswer: true)
-                questionarray.append(customer.toAnyObject())
-            }
-            else{
-                let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_7", textAnswer: "", tickAnswer: false)
-                questionarray.append(customer.toAnyObject())
-            }
-        }
-        for index in 1...10{
-            if dsr_saat_8.contains("Customer ke-\(index)"){
-                let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_8", textAnswer: "", tickAnswer: true)
-                questionarray.append(customer.toAnyObject())
-            }
-            else{
-                let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_8", textAnswer: "", tickAnswer: false)
-                questionarray.append(customer.toAnyObject())
-            }
-        }
-        for index in 1...10{
-            if dsr_saat_9.contains("Customer ke-\(index)"){
-                let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_9", textAnswer: "", tickAnswer: true)
-                questionarray.append(customer.toAnyObject())
-            }
-            else{
-                let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_9", textAnswer: "", tickAnswer: false)
-                questionarray.append(customer.toAnyObject())
-            }
-        }
-        for index in 1...10{
-            if dsr_saat_10.contains("Customer ke-\(index)"){
-                let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_10", textAnswer: "", tickAnswer: true)
-                questionarray.append(customer.toAnyObject())
-            }
-            else{
-                let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_10", textAnswer: "", tickAnswer: false)
-                questionarray.append(customer.toAnyObject())
-            }
-        }
-        
-        let questionafter1 = QuestionObject(columnID: "", questionID: "dsr_setelah_1", textAnswer: self.dsr_setelah_1r, tickAnswer: self.dsr_setelah_1)
-        questionarray.append(questionafter1.toAnyObject())
-        
-        let questionafter2 = QuestionObject(columnID: "", questionID: "dsr_setelah_2", textAnswer: self.dsr_setelah_2r, tickAnswer: self.dsr_setelah_2)
-        
-        questionarray.append(questionafter2.toAnyObject())
-        
-        print(questionarray)
-        
-        NSUserDefaults.standardUserDefaults().setValue(questionarray, forKey: KeyLocal.dsrform)
-        
-        questionanswer.setValue(questionarray)
-        
-        
-        self.performSegueWithIdentifier("dsrToSummary", sender: nil)
-        
-    }
-    
-    func saveDSRCoreData(cell: ButtonCellOf<String>, row: ButtonRow) {
-        
-        
+    func saveDTSCoreData(cell: ButtonCellOf<String>, row: ButtonRow) {
         
         if let distributor = self.form.rowByTag("distributor")?.baseValue as? String
         {
@@ -641,251 +1270,384 @@ class DTSForm : FormViewController {
             self.area = area
         }
         
-        if let dsr_sebelum_1 = self.form.rowByTag("dsr_sebelum_1")?.baseValue as? Bool
+        if let dts_sebelum_1a = self.form.rowByTag("dts_sebelum_1a")?.baseValue as? Bool
         {
-            self.dsr_sebelum_1 = dsr_sebelum_1
+            self.dts_sebelum_1a = dts_sebelum_1a
         }
-        if let dsr_sebelum_1r = self.form.rowByTag("dsr_sebelum_1r")?.baseValue as? String
+        if let dts_sebelum_1ar = self.form.rowByTag("dts_sebelum_1ar")?.baseValue as? String
         {
-            self.dsr_sebelum_1r = dsr_sebelum_1r
+            self.dts_sebelum_1ar = dts_sebelum_1ar
         }
-        if let dsr_sebelum_2 = self.form.rowByTag("dsr_sebelum_2")?.baseValue as? Bool
+        if let dts_sebelum_1b = self.form.rowByTag("dts_sebelum_1b")?.baseValue as? Bool
         {
-            self.dsr_sebelum_2 = dsr_sebelum_2
+            self.dts_sebelum_1b = dts_sebelum_1b
         }
-        if let dsr_sebelum_2r = self.form.rowByTag("dsr_sebelum_2r")?.baseValue as? String
+        if let dts_sebelum_1br = self.form.rowByTag("dts_sebelum_1br")?.baseValue as? String
         {
-            self.dsr_sebelum_2r = dsr_sebelum_2r
+            self.dts_sebelum_1br = dts_sebelum_1br
         }
-        if let dsr_sebelum_3 = self.form.rowByTag("dsr_sebelum_3")?.baseValue as? Bool
+        if let dts_sebelum_1c = self.form.rowByTag("dts_sebelum_1c")?.baseValue as? Bool
         {
-            self.dsr_sebelum_3 = dsr_sebelum_3
+            self.dts_sebelum_1c = dts_sebelum_1c
         }
-        if let dsr_sebelum_3r = self.form.rowByTag("dsr_sebelum_3r")?.baseValue as? String
+        if let dts_sebelum_1cr = self.form.rowByTag("dts_sebelum_1cr")?.baseValue as? String
         {
-            self.dsr_sebelum_3r = dsr_sebelum_3r
+            self.dts_sebelum_1cr = dts_sebelum_1cr
         }
-        if let dsr_sebelum_4a = self.form.rowByTag("dsr_sebelum_4a")?.baseValue as? Bool
+        if let dts_sebelum_1d = self.form.rowByTag("dts_sebelum_1d")?.baseValue as? Bool
         {
-            self.dsr_sebelum_4a = dsr_sebelum_4a
+            self.dts_sebelum_1d = dts_sebelum_1d
         }
-        if let dsr_sebelum_4ar = self.form.rowByTag("dsr_sebelum_4ar")?.baseValue as? String
+        if let dts_sebelum_1dr = self.form.rowByTag("dts_sebelum_1dr")?.baseValue as? String
         {
-            self.dsr_sebelum_4ar = dsr_sebelum_4ar
+            self.dts_sebelum_1dr = dts_sebelum_1dr
         }
-        if let dsr_sebelum_4b = self.form.rowByTag("dsr_sebelum_4b")?.baseValue as? Bool
+        if let dts_sebelum_1e = self.form.rowByTag("dts_sebelum_1e")?.baseValue as? Bool
         {
-            self.dsr_sebelum_4b = dsr_sebelum_4b
+            self.dts_sebelum_1e = dts_sebelum_1e
         }
-        if let dsr_sebelum_4br = self.form.rowByTag("dsr_sebelum_4br")?.baseValue as? String
+        if let dts_sebelum_1er = self.form.rowByTag("dts_sebelum_1er")?.baseValue as? String
         {
-            self.dsr_sebelum_4br = dsr_sebelum_4br
-        }
-        if let dsr_sebelum_4c = self.form.rowByTag("dsr_sebelum_4c")?.baseValue as? Bool
-        {
-            self.dsr_sebelum_4c = dsr_sebelum_4c
-        }
-        if let dsr_sebelum_4cr = self.form.rowByTag("dsr_sebelum_4cr")?.baseValue as? String
-        {
-            self.dsr_sebelum_4cr = dsr_sebelum_4cr
-        }
-        if let dsr_sebelum_4d = self.form.rowByTag("dsr_sebelum_4d")?.baseValue as? Bool
-        {
-            self.dsr_sebelum_4d = dsr_sebelum_4d
-        }
-        if let dsr_sebelum_4dr = self.form.rowByTag("dsr_sebelum_4dr")?.baseValue as? String
-        {
-            self.dsr_sebelum_4dr = dsr_sebelum_4dr
-        }
-        if let dsr_sebelum_4e = self.form.rowByTag("dsr_sebelum_4e")?.baseValue as? Bool
-        {
-            self.dsr_sebelum_4e = dsr_sebelum_4e
-        }
-        if let dsr_sebelum_4er = self.form.rowByTag("dsr_sebelum_4er")?.baseValue as? String
-        {
-            self.dsr_sebelum_4er = dsr_sebelum_4er
+            self.dts_sebelum_1er = dts_sebelum_1er
         }
         
-        if let dsr_saat_1 = self.form.rowByTag("dsr_saat_1")?.baseValue as? Set<String>
+        if let dts_sebelum_2a = self.form.rowByTag("dts_sebelum_2a")?.baseValue as? Bool
         {
-            self.dsr_saat_1 = dsr_saat_1
+            self.dts_sebelum_2a = dts_sebelum_2a
         }
-        if let dsr_saat_2 = self.form.rowByTag("dsr_saat_2")?.baseValue as? Set<String>
+        if let dts_sebelum_2ar = self.form.rowByTag("dts_sebelum_2ar")?.baseValue as? String
         {
-            self.dsr_saat_2 = dsr_saat_2
+            self.dts_sebelum_2ar = dts_sebelum_2ar
         }
-        if let dsr_saat_3 = self.form.rowByTag("dsr_saat_3")?.baseValue as? Set<String>
+        if let dts_sebelum_2b = self.form.rowByTag("dts_sebelum_2b")?.baseValue as? Bool
         {
-            self.dsr_saat_3 = dsr_saat_3
+            self.dts_sebelum_2b = dts_sebelum_2b
         }
-        if let dsr_saat_4 = self.form.rowByTag("dsr_saat_4")?.baseValue as? Set<String>
+        if let dts_sebelum_2br = self.form.rowByTag("dts_sebelum_2br")?.baseValue as? String
         {
-            self.dsr_saat_4 = dsr_saat_4
+            self.dts_sebelum_2br = dts_sebelum_2br
         }
-        if let dsr_saat_5 = self.form.rowByTag("dsr_saat_5")?.baseValue as? Set<String>
+        if let dts_sebelum_2c = self.form.rowByTag("dts_sebelum_2c")?.baseValue as? Bool
         {
-            self.dsr_saat_5 = dsr_saat_5
+            self.dts_sebelum_2c = dts_sebelum_2c
         }
-        if let dsr_saat_6 = self.form.rowByTag("dsr_saat_6")?.baseValue as? Set<String>
+        if let dts_sebelum_2cr = self.form.rowByTag("dts_sebelum_2cr")?.baseValue as? String
         {
-            self.dsr_saat_6 = dsr_saat_6
-        }
-        if let dsr_saat_7 = self.form.rowByTag("dsr_saat_7")?.baseValue as? Set<String>
-        {
-            self.dsr_saat_7 = dsr_saat_7
-        }
-        if let dsr_saat_8 = self.form.rowByTag("dsr_saat_8")?.baseValue as? Set<String>
-        {
-            self.dsr_saat_8 = dsr_saat_8
-        }
-        if let dsr_saat_9 = self.form.rowByTag("dsr_saat_9")?.baseValue as? Set<String>
-        {
-            self.dsr_saat_9 = dsr_saat_9
-        }
-        if let dsr_saat_10 = self.form.rowByTag("dsr_saat_10")?.baseValue as? Set<String>
-        {
-            self.dsr_saat_10 = dsr_saat_10
+            self.dts_sebelum_2cr = dts_sebelum_2cr
         }
         
-        if let dsr_setelah_1 = self.form.rowByTag("dsr_setelah_1")?.baseValue as? Bool
+        if let dts_sebelum_2_1a = self.form.rowByTag("dts_sebelum_2_1a")?.baseValue as? Bool
         {
-            self.dsr_setelah_1 = dsr_setelah_1
+            self.dts_sebelum_2_1a = dts_sebelum_2_1a
         }
-        if let dsr_setelah_1r = self.form.rowByTag("dsr_setelah_1r")?.baseValue as? String
+        if let dts_sebelum_2_1ar = self.form.rowByTag("dts_sebelum_2_1ar")?.baseValue as? String
         {
-            self.dsr_setelah_1r = dsr_setelah_1r
+            self.dts_sebelum_2_1ar = dts_sebelum_2_1ar
         }
-        if let dsr_setelah_2 = self.form.rowByTag("dsr_setelah_2")?.baseValue as? Bool
+        if let dts_sebelum_2_2a = self.form.rowByTag("dts_sebelum_2_2a")?.baseValue as? Bool
         {
-            self.dsr_setelah_2 = dsr_setelah_2
+            self.dts_sebelum_2_2a = dts_sebelum_2_2a
         }
-        if let dsr_setelah_2r = self.form.rowByTag("dsr_setelah_2r")?.baseValue as? String
+        if let dts_sebelum_2_2ar = self.form.rowByTag("dts_sebelum_2_2ar")?.baseValue as? String
         {
-            self.dsr_setelah_2r = dsr_setelah_2r
+            self.dts_sebelum_2_2ar = dts_sebelum_2_2ar
         }
+        if let dts_sebelum_2_2b = self.form.rowByTag("dts_sebelum_2_2b")?.baseValue as? Bool
+        {
+            self.dts_sebelum_2_2b = dts_sebelum_2_2b
+        }
+        if let dts_sebelum_2_2br = self.form.rowByTag("dts_sebelum_2_2br")?.baseValue as? String
+        {
+            self.dts_sebelum_2_2br = dts_sebelum_2_2br
+        }
+        if let dts_sebelum_2_2c = self.form.rowByTag("dts_sebelum_2_2c")?.baseValue as? Bool
+        {
+            self.dts_sebelum_2_2c = dts_sebelum_2_2c
+        }
+        if let dts_sebelum_2_2cr = self.form.rowByTag("dts_sebelum_2_2cr")?.baseValue as? String
+        {
+            self.dts_sebelum_2_2cr = dts_sebelum_2_2cr
+        }
+        if let dts_sebelum_2_2d = self.form.rowByTag("dts_sebelum_2_2d")?.baseValue as? Bool
+        {
+            self.dts_sebelum_2_2d = dts_sebelum_2_2d
+        }
+        if let dts_sebelum_2_2dr = self.form.rowByTag("dts_sebelum_2_2dr")?.baseValue as? String
+        {
+            self.dts_sebelum_2_2dr = dts_sebelum_2_2dr
+        }
+        if let dts_sebelum_2_2e = self.form.rowByTag("dts_sebelum_2_2e")?.baseValue as? Bool
+        {
+            self.dts_sebelum_2_2e = dts_sebelum_2_2e
+        }
+        if let dts_sebelum_2_2er = self.form.rowByTag("dts_sebelum_2_2er")?.baseValue as? String
+        {
+            self.dts_sebelum_2_2er = dts_sebelum_2_2er
+        }
+        
+        if let dts_sebelum_3_1 = self.form.rowByTag("dts_sebelum_3_1")?.baseValue as? Bool
+        {
+            self.dts_sebelum_3_1 = dts_sebelum_3_1
+        }
+        if let dts_sebelum_3_1r = self.form.rowByTag("dts_sebelum_3_1r")?.baseValue as? String
+        {
+            self.dts_sebelum_3_1r = dts_sebelum_3_1r
+        }
+        if let dts_sebelum_3_2 = self.form.rowByTag("dts_sebelum_3_2")?.baseValue as? Bool
+        {
+            self.dts_sebelum_3_2 = dts_sebelum_3_2
+        }
+        if let dts_sebelum_3_2r = self.form.rowByTag("dts_sebelum_3_2r")?.baseValue as? String
+        {
+            self.dts_sebelum_3_2r = dts_sebelum_3_2r
+        }
+        
+        if let dts_report_1a = self.form.rowByTag("dts_report_1a")?.baseValue as? Bool
+        {
+            self.dts_report_1a = dts_report_1a
+        }
+        if let dts_report_1ar = self.form.rowByTag("dts_report_1ar")?.baseValue as? String
+        {
+            self.dts_report_1ar = dts_report_1ar
+        }
+        if let dts_report_1b = self.form.rowByTag("dts_report_1b")?.baseValue as? Bool
+        {
+            self.dts_report_1b = dts_report_1b
+        }
+        if let dts_report_1br = self.form.rowByTag("dts_report_1br")?.baseValue as? String
+        {
+            self.dts_report_1br = dts_report_1br
+        }
+        
+        if let dts_report_2a = self.form.rowByTag("dts_report_2a")?.baseValue as? Bool
+        {
+            self.dts_report_2a = dts_report_2a
+        }
+        if let dts_report_2ar = self.form.rowByTag("dts_report_2ar")?.baseValue as? String
+        {
+            self.dts_report_2ar = dts_report_2ar
+        }
+        if let dts_report_2b = self.form.rowByTag("dts_report_2b")?.baseValue as? Bool
+        {
+            self.dts_report_2b = dts_report_2b
+        }
+        if let dts_report_2br = self.form.rowByTag("dts_report_2br")?.baseValue as? String
+        {
+            self.dts_report_2br = dts_report_2br
+        }
+        
+        if let dts_report_3a = self.form.rowByTag("dts_report_3a")?.baseValue as? Bool
+        {
+            self.dts_report_3a = dts_report_3a
+        }
+        if let dts_report_3ar = self.form.rowByTag("dts_report_3ar")?.baseValue as? String
+        {
+            self.dts_report_3ar = dts_report_3ar
+        }
+        if let dts_report_3b = self.form.rowByTag("dts_report_3b")?.baseValue as? Bool
+        {
+            self.dts_report_3b = dts_report_3b
+        }
+        if let dts_report_3br = self.form.rowByTag("dts_report_3br")?.baseValue as? String
+        {
+            self.dts_report_3br = dts_report_3br
+        }
+        if let dts_report_3c = self.form.rowByTag("dts_report_3c")?.baseValue as? Bool
+        {
+            self.dts_report_3c = dts_report_3c
+        }
+        if let dts_report_3cr = self.form.rowByTag("dts_report_3cr")?.baseValue as? String
+        {
+            self.dts_report_3cr = dts_report_3cr
+        }
+        
+        if let dts_infra_1a = self.form.rowByTag("dts_infra_1a")?.baseValue as? Bool
+        {
+            self.dts_infra_1a = dts_infra_1a
+        }
+        if let dts_infra_1ar = self.form.rowByTag("dts_infra_1ar")?.baseValue as? String
+        {
+            self.dts_infra_1ar = dts_infra_1ar
+        }
+        if let dts_infra_1b = self.form.rowByTag("dts_infra_1b")?.baseValue as? Bool
+        {
+            self.dts_infra_1b = dts_infra_1b
+        }
+        if let dts_infra_1br = self.form.rowByTag("dts_infra_1br")?.baseValue as? String
+        {
+            self.dts_infra_1br = dts_infra_1br
+        }
+        if let dts_infra_1c = self.form.rowByTag("dts_infra_1c")?.baseValue as? Bool
+        {
+            self.dts_infra_1c = dts_infra_1c
+        }
+        if let dts_infra_1cr = self.form.rowByTag("dts_infra_1cr")?.baseValue as? String
+        {
+            self.dts_infra_1cr = dts_infra_1cr
+        }
+        if let dts_infra_1d = self.form.rowByTag("dts_infra_1d")?.baseValue as? Bool
+        {
+            self.dts_infra_1d = dts_infra_1d
+        }
+        if let dts_infra_1dr = self.form.rowByTag("dts_infra_1dr")?.baseValue as? String
+        {
+            self.dts_infra_1dr = dts_infra_1dr
+        }
+        if let dts_infra_1e = self.form.rowByTag("dts_infra_1e")?.baseValue as? Bool
+        {
+            self.dts_infra_1e = dts_infra_1e
+        }
+        if let dts_infra_1er = self.form.rowByTag("dts_infra_1er")?.baseValue as? String
+        {
+            self.dts_infra_1er = dts_infra_1er
+        }
+        if let dts_infra_1f = self.form.rowByTag("dts_infra_1f")?.baseValue as? Bool
+        {
+            self.dts_infra_1f = dts_infra_1f
+        }
+        if let dts_infra_1fr = self.form.rowByTag("dts_infra_1fr")?.baseValue as? String
+        {
+            self.dts_infra_1fr = dts_infra_1fr
+        }
+        if let dts_infra_1g = self.form.rowByTag("dts_infra_1g")?.baseValue as? Bool
+        {
+            self.dts_infra_1g = dts_infra_1g
+        }
+        if let dts_infra_1gr = self.form.rowByTag("dts_infra_1gr")?.baseValue as? String
+        {
+            self.dts_infra_1gr = dts_infra_1gr
+        }
+        
+        if let dts_infra_2a = self.form.rowByTag("dts_infra_2a")?.baseValue as? Bool
+        {
+            self.dts_infra_2a = dts_infra_2a
+        }
+        if let dts_infra_2ar = self.form.rowByTag("dts_infra_2ar")?.baseValue as? String
+        {
+            self.dts_infra_2ar = dts_infra_2ar
+        }
+        if let dts_infra_2b = self.form.rowByTag("dts_infra_2b")?.baseValue as? Bool
+        {
+            self.dts_infra_2b = dts_infra_2b
+        }
+        if let dts_infra_2br = self.form.rowByTag("dts_infra_2br")?.baseValue as? String
+        {
+            self.dts_infra_2br = dts_infra_2br
+        }
+        if let dts_infra_2c = self.form.rowByTag("dts_infra_2c")?.baseValue as? Bool
+        {
+            self.dts_infra_2c = dts_infra_2c
+        }
+        if let dts_infra_2cr = self.form.rowByTag("dts_infra_2cr")?.baseValue as? String
+        {
+            self.dts_infra_2cr = dts_infra_2cr
+        }
+        if let dts_infra_2d = self.form.rowByTag("dts_infra_2d")?.baseValue as? Bool
+        {
+            self.dts_infra_2d = dts_infra_2d
+        }
+        if let dts_infra_2dr = self.form.rowByTag("dts_infra_2dr")?.baseValue as? String
+        {
+            self.dts_infra_2dr = dts_infra_2dr
+        }
+        if let dts_infra_2e = self.form.rowByTag("dts_infra_2e")?.baseValue as? Bool
+        {
+            self.dts_infra_2e = dts_infra_2e
+        }
+        if let dts_infra_2er = self.form.rowByTag("dts_infra_2er")?.baseValue as? String
+        {
+            self.dts_infra_2er = dts_infra_2er
+        }
+        if let dts_infra_3 = self.form.rowByTag("dts_infra_3")?.baseValue as? Bool
+        {
+            self.dts_infra_3 = dts_infra_3
+        }
+        if let dts_infra_3r = self.form.rowByTag("dts_infra_3r")?.baseValue as? String
+        {
+            self.dts_infra_3r = dts_infra_3r
+        }
+
+        if let dts_dsr_1a = self.form.rowByTag("dts_dsr_1a")?.baseValue as? Bool
+        {
+            self.dts_dsr_1a = dts_dsr_1a
+        }
+        if let dts_dsr_1ar = self.form.rowByTag("dts_dsr_1ar")?.baseValue as? String
+        {
+            self.dts_dsr_1ar = dts_dsr_1ar
+        }
+        if let dts_dsr_1b = self.form.rowByTag("dts_dsr_1b")?.baseValue as? Bool
+        {
+            self.dts_dsr_1b = dts_dsr_1b
+        }
+        if let dts_dsr_1br = self.form.rowByTag("dts_dsr_1br")?.baseValue as? String
+        {
+            self.dts_dsr_1br = dts_dsr_1br
+        }
+        if let dts_dsr_1c = self.form.rowByTag("dts_dsr_1c")?.baseValue as? Bool
+        {
+            self.dts_dsr_1c = dts_dsr_1c
+        }
+        if let dts_dsr_1cr = self.form.rowByTag("dts_dsr_1cr")?.baseValue as? String
+        {
+            self.dts_dsr_1cr = dts_dsr_1cr
+        }
+
         
         
         let csession = NSUserDefaults.standardUserDefaults().objectForKey(KeyLocal.coachingSession) as! String
         
         
-        self.saveQuestionData("", questionID: "dsr_sebelum_1",textAnswer: self.dsr_sebelum_1r,tickAnswer: self.dsr_sebelum_1, id: csession)
-        self.saveQuestionData("", questionID: "dsr_sebelum_2",textAnswer: self.dsr_sebelum_2r,tickAnswer: self.dsr_sebelum_2, id: csession)
-        self.saveQuestionData("", questionID: "dsr_sebelum_3",textAnswer: self.dsr_sebelum_3r,tickAnswer: self.dsr_sebelum_3, id: csession)
-        self.saveQuestionData("", questionID: "dsr_sebelum_4a",textAnswer: self.dsr_sebelum_4ar,tickAnswer: self.dsr_sebelum_4a, id: csession)
-        self.saveQuestionData("", questionID: "dsr_sebelum_4b",textAnswer: self.dsr_sebelum_4br,tickAnswer: self.dsr_sebelum_4b, id: csession)
-        self.saveQuestionData("", questionID: "dsr_sebelum_4c",textAnswer: self.dsr_sebelum_4cr,tickAnswer: self.dsr_sebelum_4c, id: csession)
-        self.saveQuestionData("", questionID: "dsr_sebelum_4d",textAnswer: self.dsr_sebelum_4dr,tickAnswer: self.dsr_sebelum_4d, id: csession)
-        self.saveQuestionData("", questionID: "dsr_sebelum_4e",textAnswer: self.dsr_sebelum_4er,tickAnswer: self.dsr_sebelum_4e, id: csession)
+        self.saveQuestionData("", questionID: "dts_sebelum_1a",textAnswer: self.dts_sebelum_1ar,tickAnswer: self.dts_sebelum_1a, id: csession)
+        self.saveQuestionData("", questionID: "dts_sebelum_1b",textAnswer: self.dts_sebelum_1br,tickAnswer: self.dts_sebelum_1b, id: csession)
+        self.saveQuestionData("", questionID: "dts_sebelum_1c",textAnswer: self.dts_sebelum_1cr,tickAnswer: self.dts_sebelum_1c, id: csession)
+        self.saveQuestionData("", questionID: "dts_sebelum_1d",textAnswer: self.dts_sebelum_1dr,tickAnswer: self.dts_sebelum_1d, id: csession)
+        self.saveQuestionData("", questionID: "dts_sebelum_1e",textAnswer: self.dts_sebelum_1er,tickAnswer: self.dts_sebelum_1e, id: csession)
         
-        for index in 1...10{
-            if dsr_saat_1.contains("Customer ke-\(index)"){
-                self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_1", textAnswer: "", tickAnswer: true, id: csession)
-            }
-            else{
-                self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_1", textAnswer: "", tickAnswer: false, id: csession)
-                
-            }
-        }
-        for index in 1...10{
-            if dsr_saat_2.contains("Customer ke-\(index)"){
-                self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_2", textAnswer: "", tickAnswer: true, id: csession)
-                
-            }
-            else{
-                self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_2", textAnswer: "", tickAnswer: false, id: csession)
-                
-            }
-        }
-        for index in 1...10{
-            if dsr_saat_3.contains("Customer ke-\(index)"){
-                self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_3", textAnswer: "", tickAnswer: true, id: csession)
-                
-            }
-            else{
-                self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_3", textAnswer: "", tickAnswer: false, id: csession)
-                
-            }
-        }
-        for index in 1...10{
-            if dsr_saat_4.contains("Customer ke-\(index)"){
-                self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_4", textAnswer: "", tickAnswer: true, id: csession)
-                
-            }
-            else{
-                self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_4", textAnswer: "", tickAnswer: false, id: csession)
-                
-            }
-        }
-        for index in 1...10{
-            if dsr_saat_5.contains("Customer ke-\(index)"){
-                self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_5", textAnswer: "", tickAnswer: true, id: csession)
-                
-            }
-            else{
-                self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_5", textAnswer: "", tickAnswer: false, id: csession)
-                
-            }
-        }
-        for index in 1...10{
-            if dsr_saat_6.contains("Customer ke-\(index)"){
-                self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_6", textAnswer: "", tickAnswer: true, id: csession)
-                
-            }
-            else{
-                self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_6", textAnswer: "", tickAnswer: false, id: csession)
-                
-            }
-        }
-        for index in 1...10{
-            if dsr_saat_7.contains("Customer ke-\(index)"){
-                self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_7", textAnswer: "", tickAnswer: true, id: csession)
-                
-            }
-            else{
-                self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_7", textAnswer: "", tickAnswer: false, id: csession)
-                
-            }
-        }
-        for index in 1...10{
-            if dsr_saat_8.contains("Customer ke-\(index)"){
-                self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_8", textAnswer: "", tickAnswer: true, id: csession)
-                
-            }
-            else{
-                self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_8", textAnswer: "", tickAnswer: false, id: csession)
-                
-            }
-        }
-        for index in 1...10{
-            if dsr_saat_9.contains("Customer ke-\(index)"){
-                self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_9", textAnswer: "", tickAnswer: true, id: csession)
-                
-            }
-            else{
-                self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_9", textAnswer: "", tickAnswer: false, id: csession)
-                
-            }
-        }
-        for index in 1...10{
-            if dsr_saat_10.contains("Customer ke-\(index)"){
-                self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_10", textAnswer: "", tickAnswer: true, id: csession)
-                
-            }
-            else{
-                self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_10", textAnswer: "", tickAnswer: false, id: csession)
-                
-            }
-        }
+        self.saveQuestionData("", questionID: "dts_sebelum_2a",textAnswer: self.dts_sebelum_2ar,tickAnswer: self.dts_sebelum_2a, id: csession)
+        self.saveQuestionData("", questionID: "dts_sebelum_2b",textAnswer: self.dts_sebelum_2br,tickAnswer: self.dts_sebelum_2b, id: csession)
+        self.saveQuestionData("", questionID: "dts_sebelum_2c",textAnswer: self.dts_sebelum_2cr,tickAnswer: self.dts_sebelum_2c, id: csession)
         
-        self.saveQuestionData("", questionID: "dsr_setelah_1", textAnswer: self.dsr_setelah_1r, tickAnswer: self.dsr_setelah_1, id: csession)
+        self.saveQuestionData("", questionID: "dts_sebelum_2_1a",textAnswer: self.dts_sebelum_2_1ar,tickAnswer: self.dts_sebelum_2_1a, id: csession)
+        self.saveQuestionData("", questionID: "dts_sebelum_2_2a",textAnswer: self.dts_sebelum_2_2ar,tickAnswer: self.dts_sebelum_2_2a, id: csession)
+        self.saveQuestionData("", questionID: "dts_sebelum_2_2b",textAnswer: self.dts_sebelum_2_2br,tickAnswer: self.dts_sebelum_2_2b, id: csession)
+        self.saveQuestionData("", questionID: "dts_sebelum_2_2c",textAnswer: self.dts_sebelum_2_2cr,tickAnswer: self.dts_sebelum_2_2c, id: csession)
+        self.saveQuestionData("", questionID: "dts_sebelum_2_2d",textAnswer: self.dts_sebelum_2_2dr,tickAnswer: self.dts_sebelum_2_2d, id: csession)
+        self.saveQuestionData("", questionID: "dts_sebelum_2_2e",textAnswer: self.dts_sebelum_2_2er,tickAnswer: self.dts_sebelum_2_2e, id: csession)
         
-        self.saveQuestionData("", questionID: "dsr_setelah_2", textAnswer: self.dsr_setelah_2r, tickAnswer: self.dsr_setelah_2, id: csession)
+        self.saveQuestionData("", questionID: "dts_sebelum_3_1",textAnswer: self.dts_sebelum_3_1r,tickAnswer: self.dts_sebelum_3_1, id: csession)
+        self.saveQuestionData("", questionID: "dts_sebelum_3_2",textAnswer: self.dts_sebelum_3_2r,tickAnswer: self.dts_sebelum_3_2, id: csession)
         
+        self.saveQuestionData("", questionID: "dts_report_1a",textAnswer: self.dts_report_1ar,tickAnswer: self.dts_report_1a, id: csession)
+        self.saveQuestionData("", questionID: "dts_report_1b",textAnswer: self.dts_report_1br,tickAnswer: self.dts_report_1b, id: csession)
+        self.saveQuestionData("", questionID: "dts_report_2a",textAnswer: self.dts_report_2ar,tickAnswer: self.dts_report_2a, id: csession)
+        self.saveQuestionData("", questionID: "dts_report_2b",textAnswer: self.dts_report_2br,tickAnswer: self.dts_report_2b, id: csession)
+        self.saveQuestionData("", questionID: "dts_report_3a",textAnswer: self.dts_report_3ar,tickAnswer: self.dts_report_3a, id: csession)
+        self.saveQuestionData("", questionID: "dts_report_3b",textAnswer: self.dts_report_3br,tickAnswer: self.dts_report_3b, id: csession)
+        self.saveQuestionData("", questionID: "dts_report_3c",textAnswer: self.dts_report_3cr,tickAnswer: self.dts_report_3c, id: csession)
         
+        self.saveQuestionData("", questionID: "dts_infra_1a",textAnswer: self.dts_infra_1ar,tickAnswer: self.dts_infra_1a, id: csession)
+        self.saveQuestionData("", questionID: "dts_infra_1b",textAnswer: self.dts_infra_1br,tickAnswer: self.dts_infra_1b, id: csession)
+        self.saveQuestionData("", questionID: "dts_infra_1c",textAnswer: self.dts_infra_1cr,tickAnswer: self.dts_infra_1c, id: csession)
+        self.saveQuestionData("", questionID: "dts_infra_1d",textAnswer: self.dts_infra_1dr,tickAnswer: self.dts_infra_1d, id: csession)
+        self.saveQuestionData("", questionID: "dts_infra_1e",textAnswer: self.dts_infra_1er,tickAnswer: self.dts_infra_1e, id: csession)
+        self.saveQuestionData("", questionID: "dts_infra_1f",textAnswer: self.dts_infra_1fr,tickAnswer: self.dts_infra_1f, id: csession)
+        self.saveQuestionData("", questionID: "dts_infra_1g",textAnswer: self.dts_infra_1gr,tickAnswer: self.dts_infra_1g, id: csession)
+        
+        self.saveQuestionData("", questionID: "dts_infra_2a",textAnswer: self.dts_infra_2ar,tickAnswer: self.dts_infra_2a, id: csession)
+        self.saveQuestionData("", questionID: "dts_infra_2b",textAnswer: self.dts_infra_2br,tickAnswer: self.dts_infra_2b, id: csession)
+        self.saveQuestionData("", questionID: "dts_infra_2c",textAnswer: self.dts_infra_2cr,tickAnswer: self.dts_infra_2c, id: csession)
+        self.saveQuestionData("", questionID: "dts_infra_2d",textAnswer: self.dts_infra_2dr,tickAnswer: self.dts_infra_2d, id: csession)
+        self.saveQuestionData("", questionID: "dts_infra_2e",textAnswer: self.dts_infra_2er,tickAnswer: self.dts_infra_2e, id: csession)
+        
+        self.saveQuestionData("", questionID: "dts_infra_3",textAnswer: self.dts_infra_3r,tickAnswer: self.dts_infra_3, id: csession)
+        
+        self.saveQuestionData("", questionID: "dts_dsr_1a",textAnswer: self.dts_dsr_1ar,tickAnswer: self.dts_dsr_1a, id: csession)
+        self.saveQuestionData("", questionID: "dts_dsr_1b",textAnswer: self.dts_dsr_1br,tickAnswer: self.dts_dsr_1b, id: csession)
+        self.saveQuestionData("", questionID: "dts_dsr_1c",textAnswer: self.dts_dsr_1cr,tickAnswer: self.dts_dsr_1c, id: csession)
         
         self.updateCoachingData(self.distributor, area: self.area, id: csession)
         
-        self.performSegueWithIdentifier("dsrToSummary", sender: nil)
+        self.performSegueWithIdentifier("dtsToSummary", sender: nil)
         
     }
     

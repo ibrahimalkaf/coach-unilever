@@ -11,7 +11,10 @@ import Foundation
 struct KeyLocal {
     static let uid = "uid"
     static let coachname = "coachname"
-    static let coacheename = "coacheename"
+    static let coacheemail = "coacheename"
+    static let fsemail = "fsemail"
+    static let ndemail = "ndemail"
+    static let cdemail = "cdemail"
     static let email = "email"
     static let position = "position"
     static let numberUnsync = "numberUnsync"
@@ -23,6 +26,7 @@ struct KeyLocal {
     static let distributor = "distributor"
     static let area = "area"
     static let store = "store"
+    static let language = "language"
     
     static let fasaq1 = "fasaq1"
     

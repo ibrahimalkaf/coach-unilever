@@ -26,7 +26,7 @@ class PDFFormComposer: NSObject {
     
     //let pathToLastItemHTMLTemplate = NSBundle.mainBundle().pathForResource("last_item", ofType: "html")
     
-    let senderInfo = "Gabriel Theodoropoulos<br>123 Somewhere Str.<br>10000 - MyCity<br>MyCountry"
+    let senderInfo = KeyLocal.coachname
     
     let dueDate = ""
     

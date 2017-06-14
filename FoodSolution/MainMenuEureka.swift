@@ -100,17 +100,47 @@ class MainMenuEureka : FormViewController {
             }.onCellSelection({ (cell, row) in
                 print(self.language)
                 print(self.report)
-                if self.report == "Optional(\"DSR Coaching Guideline\")" && self.language == "Optional(\"Bahasa\")"{
+                if self.report == "Optional(\"DSR Coaching Guideline\")" {
                     
                     //setting variable dsr
                     
                     NSUserDefaults.standardUserDefaults().setValue(1, forKey: KeyLocal.coachingGuideline)
                     self.performSegueWithIdentifier("coachHistory", sender: nil)
                 }
-                else if self.report == "Optional(\"FA/SA/Merchandiser Coaching Guideline\")" && self.language == "Optional(\"Bahasa\")"{
+                else if self.report == "Optional(\"FA/SA/Merchandiser Coaching Guideline\")" {
                     
                     //setting variable fasa
                     NSUserDefaults.standardUserDefaults().setValue(2, forKey: KeyLocal.coachingGuideline)
+                    self.performSegueWithIdentifier("coachHistory", sender: nil)
+                }
+                else if self.report == "Optional(\"ASM Push Coaching Guideline\")" {
+                    
+                    //setting variable fasa
+                    NSUserDefaults.standardUserDefaults().setValue(3, forKey: KeyLocal.coachingGuideline)
+                    self.performSegueWithIdentifier("coachHistory", sender: nil)
+                }
+                else if self.report == "Optional(\"ASM Pull Coaching Guideline\")" {
+                    
+                    //setting variable fasa
+                    NSUserDefaults.standardUserDefaults().setValue(4, forKey: KeyLocal.coachingGuideline)
+                    self.performSegueWithIdentifier("coachHistory", sender: nil)
+                }
+                else if self.report == "Optional(\"DTS Coaching Guideline\")" {
+                    
+                    //setting variable fasa
+                    NSUserDefaults.standardUserDefaults().setValue(5, forKey: KeyLocal.coachingGuideline)
+                    self.performSegueWithIdentifier("coachHistory", sender: nil)
+                }
+                else if self.report == "Optional(\"SR Pull Bareca/Hotel Coaching Guideline\")" {
+                    
+                    //setting variable fasa
+                    NSUserDefaults.standardUserDefaults().setValue(6, forKey: KeyLocal.coachingGuideline)
+                    self.performSegueWithIdentifier("coachHistory", sender: nil)
+                }
+                else if self.report == "Optional(\"RSM Coaching Guideline\")" {
+                    
+                    //setting variable fasa
+                    NSUserDefaults.standardUserDefaults().setValue(7, forKey: KeyLocal.coachingGuideline)
                     self.performSegueWithIdentifier("coachHistory", sender: nil)
                 }
                 else{
@@ -128,6 +158,7 @@ class MainMenuEureka : FormViewController {
         if row.section === form[2] {
             let selected = "\((row.section as! SelectableSection<ImageCheckRow<String>, String>).selectedRow()?.baseValue)"
             print("Language :",selected)
+            NSUserDefaults.standardUserDefaults().setObject(selected, forKey: KeyLocal.language)
             self.language = selected
         }
     }

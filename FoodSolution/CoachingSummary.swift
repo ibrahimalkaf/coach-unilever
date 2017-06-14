@@ -11,6 +11,7 @@ import Eureka
 import FirebaseAuth
 import FirebaseDatabase
 import CoreData
+import MessageUI
 
 
 class CoachingSummary : FormViewController {
@@ -63,15 +64,17 @@ class CoachingSummary : FormViewController {
             <<< LabelRow(){
                 $0.title = "Coach\t: \(NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.coachname) as String! )"
             }
-            <<< LabelRow(){
-                $0.title = "Coachee\t: \(NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.coacheename) as String! )"
+            <<< TextRow(){
+                $0.title = "Coachee\t: \(NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.coacheemail) as String! )"
             }
-            <<< LabelRow(){
-                $0.title = "Distributor\t:\(NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.distributor) as String! )"
+            <<< TextRow(){
+                $0.title = "Distributor\t:"
+                $0.placeholder = (NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.distributor) as String! )
 
             }
-            <<< LabelRow(){
-                $0.title = "Area\t\t:\(NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.area) as String! )"
+            <<< TextRow(){
+                $0.title = "Area\t\t:"
+                $0.placeholder = (NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.area) as String! )
             }
         
             +++ Section(){
@@ -149,12 +152,16 @@ class CoachingSummary : FormViewController {
             print("there is internet connection, save to firebase")
             self.savecoachingtofirebase(csession)
             self.saveformtofirebase(csession)
-            //self.showMessage("Report save", message: "Laporan berhasil disimpan ke sistem")
+            let notPermitted = UIAlertView(title: "Alert", message: "Laporan berhasil disimpan ke sistem", delegate: nil, cancelButtonTitle: "OK")
+            notPermitted.show()
+            
             self.performSegueWithIdentifier("summaryToProfile", sender: nil)
         }
         else{
-            print("no internet connection, save to local")
+            print("No internet connection, save to local")
              self.updateCoachingData(self.summary3, id: csession)
+            let notPermitted = UIAlertView(title: "Alert", message: "No internet connection, save to local", delegate: nil, cancelButtonTitle: "OK")
+            notPermitted.show()
              self.performSegueWithIdentifier("summaryToProfile", sender: nil)
         }
 
@@ -336,19 +343,32 @@ class CoachingSummary : FormViewController {
                               completion: nil)
         
     }
-    
 }
 
 class Question1: UIView {
     
+    var language : String = ""
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.frame = CGRect(x: 10, y: 0, width: 320, height: 50)
         let label = UILabel(frame: self.frame)
+        
+        if let bahasa = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.language) {
+            language = bahasa as String!
+            print("bahasa:",bahasa)
+        }
+        
         // setup the label as you wish here
-        label.text = "Apa yang telah dilakukan dengan baik" // label name
-        label.font = UIFont(name: "Arial", size: 14) // Font
+        if language == "Optional(\"Bahasa\")" {
+            label.text = "1. Tuliskan apa yang telah dilakukan dengan baik (max. 3hal)" // label name
+        }
+        else if language == "Optional(\"English\")" {
+            label.text = "1. Write what has been done well? (max. 3pages)"
+        }
+        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        label.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+        label.font = UIFont(name: "Arial", size: 12) // Font
         label.textColor = UIColor.blackColor() // label textColor
         label.textAlignment = NSTextAlignment.Left // label Alignment
         // end label setup
@@ -361,14 +381,30 @@ class Question1: UIView {
 }
 
 class Question2: UIView {
+    
+    var language : String = ""
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.frame = CGRect(x: 10, y: 0, width: 320, height: 50)
         let label = UILabel(frame: self.frame)
-        // setup the label as you wish here
-        label.text = "Apa yang perlu ditingkatkan" // label name
-        label.font = UIFont(name: "Arial", size: 14) // Font
+        
+        if let bahasa = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.language) {
+            language = bahasa as String!
+            print("bahasa:",bahasa)
+        }
+        
+        if language == "Optional(\"Bahasa\")" {
+            label.text = "2. Tuliskan apa yang dapat dilakukan dengan lebih baik (max.3hal)" // label name
+        }
+        else if language == "Optional(\"English\")" {
+            label.text = "2. Write what can be improved?(max. 3pages)"
+        }
+        
+        
+        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        label.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+        label.font = UIFont(name: "Arial", size: 12) // Font
         label.textColor = UIColor.blackColor() // label textColor
         label.textAlignment = NSTextAlignment.Left // label Alignment
         // end label setup
@@ -382,13 +418,29 @@ class Question2: UIView {
 
 class Question3: UIView {
     
+    var language : String = ""
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.frame = CGRect(x: 10, y: 0, width: 320, height: 50)
         let label = UILabel(frame: self.frame)
+        
+        if let bahasa = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.language) {
+            language = bahasa as String!
+            print("bahasa:",bahasa)
+        }
+        
+        if language == "Optional(\"Bahasa\")" {
+            label.text = "3. Tuliskan apa yang perlu dilakukan untuk mendukung point 2 di atas (max.3action)"
+        }
+        else if language == "Optional(\"English\")" {
+            label.text = "3. Write what needs to be done to support the 2 points above (max. 3action)"
+        }
+        
         // setup the label as you wish here
-        label.text = "Apa yang perlu dilakukan untuk perbaikan" // label name
-        label.font = UIFont(name: "Arial", size: 14) // Font
+        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        label.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+        label.font = UIFont(name: "Arial", size: 12) // Font
         label.textColor = UIColor.blackColor() // label textColor
         label.textAlignment = NSTextAlignment.Left // label Alignment
         // end label setup

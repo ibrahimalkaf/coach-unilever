@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		9DF7AAA5B9B92033D5C26018 /* Pods_FoodSolution.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33FFDBBD283EFE876C58E360 /* Pods_FoodSolution.framework */; };
 		B601FE811D9E4CCD005CEE4B /* DTSForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B601FE801D9E4CCD005CEE4B /* DTSForm.swift */; };
+		B601FE841DA39ED9005CEE4B /* ASMPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = B601FE831DA39ED8005CEE4B /* ASMPush.swift */; };
+		B601FE861DA3DBB8005CEE4B /* ASMPull.swift in Sources */ = {isa = PBXBuildFile; fileRef = B601FE851DA3DBB8005CEE4B /* ASMPull.swift */; };
+		B601FE881DA4624E005CEE4B /* SRForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B601FE871DA4624E005CEE4B /* SRForm.swift */; };
 		B61112B91D76BE2200E14053 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61112B81D76BE2200E14053 /* DataService.swift */; };
 		B61112BC1D77275100E14053 /* CoachingSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61112BB1D77275100E14053 /* CoachingSummary.swift */; };
 		B61112BE1D774CD900E14053 /* MainMenuEureka.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61112BD1D774CD900E14053 /* MainMenuEureka.swift */; };
@@ -38,7 +41,7 @@
 		B6AE80EF1D88125700829AFF /* fasa_template_revisi.html in Resources */ = {isa = PBXBuildFile; fileRef = B6AE80EE1D88125700829AFF /* fasa_template_revisi.html */; };
 		B6B8FE361D659B11001C02EF /* FASAForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B8FE351D659B11001C02EF /* FASAForm.swift */; };
 		B6BB87B31D822E7E00933CAE /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BB87B21D822E7D00933CAE /* Reachability.swift */; };
-		B6C7038C1D6BFEAD00C34E16 /* FASAQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C7038B1D6BFEAC00C34E16 /* FASAQuestion.swift */; };
+		B6D2BC121DAF2E8F00D9459B /* FASAQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D2BC111DAF2E8F00D9459B /* FASAQ.swift */; };
 		B6DE14431D74B7E00018EB7B /* CoachingProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DE14421D74B7E00018EB7B /* CoachingProfile.swift */; };
 		B6DE14461D74CC4B0018EB7B /* HeaderLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6DE14451D74CC4A0018EB7B /* HeaderLogin.xib */; };
 		B6DE14481D74CD770018EB7B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DE14471D74CD770018EB7B /* HeaderView.swift */; };
@@ -52,6 +55,9 @@
 		33FFDBBD283EFE876C58E360 /* Pods_FoodSolution.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodSolution.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6883F92BC25F4932BD2630D7 /* Pods-FoodSolution.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodSolution.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodSolution/Pods-FoodSolution.release.xcconfig"; sourceTree = "<group>"; };
 		B601FE801D9E4CCD005CEE4B /* DTSForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTSForm.swift; sourceTree = "<group>"; };
+		B601FE831DA39ED8005CEE4B /* ASMPush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASMPush.swift; sourceTree = "<group>"; };
+		B601FE851DA3DBB8005CEE4B /* ASMPull.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASMPull.swift; sourceTree = "<group>"; };
+		B601FE871DA4624E005CEE4B /* SRForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRForm.swift; sourceTree = "<group>"; };
 		B61112B81D76BE2200E14053 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		B61112BB1D77275100E14053 /* CoachingSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachingSummary.swift; sourceTree = "<group>"; };
 		B61112BD1D774CD900E14053 /* MainMenuEureka.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuEureka.swift; sourceTree = "<group>"; };
@@ -84,7 +90,7 @@
 		B6AE80F01D88583400829AFF /* versioning.developerprofile */ = {isa = PBXFileReference; lastKnownFileType = file; name = versioning.developerprofile; path = FoodSolution/versioning.developerprofile; sourceTree = "<group>"; };
 		B6B8FE351D659B11001C02EF /* FASAForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FASAForm.swift; sourceTree = "<group>"; };
 		B6BB87B21D822E7D00933CAE /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
-		B6C7038B1D6BFEAC00C34E16 /* FASAQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FASAQuestion.swift; sourceTree = "<group>"; };
+		B6D2BC111DAF2E8F00D9459B /* FASAQ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FASAQ.swift; sourceTree = "<group>"; };
 		B6DE14421D74B7E00018EB7B /* CoachingProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoachingProfile.swift; path = ../CoachingProfile.swift; sourceTree = "<group>"; };
 		B6DE14451D74CC4A0018EB7B /* HeaderLogin.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HeaderLogin.xib; path = ../HeaderLogin.xib; sourceTree = "<group>"; };
 		B6DE14471D74CD770018EB7B /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderView.swift; path = ../HeaderView.swift; sourceTree = "<group>"; };
@@ -145,9 +151,12 @@
 				B66A900C1D60B81700042ABA /* coachHistory.swift */,
 				B6630CA91D61FE2A008C6537 /* DSRForm.swift */,
 				B6B8FE351D659B11001C02EF /* FASAForm.swift */,
-				B6C7038B1D6BFEAC00C34E16 /* FASAQuestion.swift */,
+				B6D2BC111DAF2E8F00D9459B /* FASAQ.swift */,
 				B61112BB1D77275100E14053 /* CoachingSummary.swift */,
 				B601FE801D9E4CCD005CEE4B /* DTSForm.swift */,
+				B601FE831DA39ED8005CEE4B /* ASMPush.swift */,
+				B601FE851DA3DBB8005CEE4B /* ASMPull.swift */,
+				B601FE871DA4624E005CEE4B /* SRForm.swift */,
 			);
 			name = Form;
 			sourceTree = "<group>";
@@ -355,27 +364,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6C7038C1D6BFEAD00C34E16 /* FASAQuestion.swift in Sources */,
 				B66A8FE81D60552400042ABA /* ViewController.swift in Sources */,
 				B61112C01D77518300E14053 /* CustomCell.swift in Sources */,
 				B61112C51D776E8900E14053 /* UserObject.swift in Sources */,
 				B61112C91D79018C00E14053 /* QuestionObject.swift in Sources */,
 				B6BB87B31D822E7E00933CAE /* Reachability.swift in Sources */,
+				B601FE861DA3DBB8005CEE4B /* ASMPull.swift in Sources */,
 				B6223F521D70995200505EB9 /* MainMenu.swift in Sources */,
 				B6223F5A1D70E2DC00505EB9 /* PDFFormComposer.swift in Sources */,
 				B66A90031D6070C000042ABA /* syncCell.swift in Sources */,
 				B66A8FE61D60552400042ABA /* AppDelegate.swift in Sources */,
+				B601FE881DA4624E005CEE4B /* SRForm.swift in Sources */,
 				B6F11AD41D79BFB900F26496 /* FASAObject.swift in Sources */,
 				B61112B91D76BE2200E14053 /* DataService.swift in Sources */,
 				B66A90071D60760300042ABA /* coaching.swift in Sources */,
 				B6DE144A1D74CF7E0018EB7B /* LoginEureka.swift in Sources */,
 				B6630CAA1D61FE2A008C6537 /* DSRForm.swift in Sources */,
 				B6223F581D70CAA900505EB9 /* DSRPrintPageRenderer.swift in Sources */,
+				B6D2BC121DAF2E8F00D9459B /* FASAQ.swift in Sources */,
 				B6DE144C1D75D7570018EB7B /* CoachingObject.swift in Sources */,
 				B6DE14431D74B7E00018EB7B /* CoachingProfile.swift in Sources */,
 				B66A900B1D607F1700042ABA /* SyncPage.swift in Sources */,
 				B61112BE1D774CD900E14053 /* MainMenuEureka.swift in Sources */,
 				B61112BC1D77275100E14053 /* CoachingSummary.swift in Sources */,
+				B601FE841DA39ED9005CEE4B /* ASMPush.swift in Sources */,
 				B6B8FE361D659B11001C02EF /* FASAForm.swift in Sources */,
 				B66A8FEE1D60552400042ABA /* FoodSolution.xcdatamodeld in Sources */,
 				B66A900D1D60B81800042ABA /* coachHistory.swift in Sources */,

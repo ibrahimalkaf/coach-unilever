@@ -37,6 +37,8 @@ class DSRForm : FormViewController {
     var dsr_sebelum_4dr: String = ""
     var dsr_sebelum_4e: Bool = false
     var dsr_sebelum_4er: String = ""
+    var dsr_sebelum_4f: Bool = false
+    var dsr_sebelum_4fr: String = ""
     
     var dsr_saat_1: Set<String> = []
     var dsr_saat_2: Set<String> = []
@@ -53,13 +55,25 @@ class DSRForm : FormViewController {
     var dsr_setelah_1r: String = ""
     var dsr_setelah_2: Bool = false
     var dsr_setelah_2r: String = ""
+    var language : String = ""
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         let coachname = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.coachname) as String!
-        let coacheename = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.coacheename) as String!
+        let coacheename = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.coacheemail) as String!
         self.coachingsession = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.coachingSession)!
+        //language = "English"
+        
+        
+        if let bahasa = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.language) {
+            language = bahasa as String!
+            print("bahasa:",bahasa)
+            print("coachname",coachname)
+        }
+       
+        print("bahasa:",language)
+        
         
         /*
         rootRef = FIRDatabase.database().reference()
@@ -97,6 +111,7 @@ class DSRForm : FormViewController {
             cell.textLabel?.textColor = .whiteColor()
         }
         
+        if language == "Optional(\"Bahasa\")" {
         
         form =  Section(){
                 section in
@@ -111,8 +126,6 @@ class DSRForm : FormViewController {
                 footer.height = {30}
                 section.footer = footer
             }
-                
-            
             
             <<< SegmentedRow<String>("segments"){
                 $0.options = ["Sebelum", "Kunjungan", "Setelah"]
@@ -124,18 +137,18 @@ class DSRForm : FormViewController {
             +++ Section()
                 
                 <<< LabelRow(){
-                    $0.title = "Coach\t: \(coachname)"
+                    $0.title = "Coach\t\t: \(coachname)"
                 }
                 <<< LabelRow(){
-                $0.title = "Coachee\t: \(coacheename)"
+                $0.title = "Coachee\t\t: \(coacheename)"
                 }
                 <<< TextRow(){
                     $0.tag = "distributor"
-                    $0.title = "Distributor:"
+                    $0.title = "  Distributor\t:"
                 }
                 <<< TextRow(){
                     $0.tag = "area"
-                    $0.title = "Area:"
+                    $0.title = "  Area\t\t:"
                 }
                 
 
@@ -151,7 +164,10 @@ class DSRForm : FormViewController {
             <<< CheckRow(){
                 $0.tag = "dsr_sebelum_1"
                 $0.title = "1. Menganalisa kembali tujuan dari kunjungan"
-            }
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
             <<< TextRow(){
                 $0.tag = "dsr_sebelum_1r"
                 $0.placeholder = "Remarks:"
@@ -160,7 +176,10 @@ class DSRForm : FormViewController {
             <<< CheckRow(){
                 $0.tag = "dsr_sebelum_2"
                 $0.title = "2. Men-cek stock availability yang ada di gudang"
-            }
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
             <<< TextRow(){
                 $0.tag = "dsr_sebelum_2r"
                 $0.placeholder = "Remarks:"
@@ -168,7 +187,10 @@ class DSRForm : FormViewController {
             <<< CheckRow(){
                 $0.tag = "dsr_sebelum_3"
                 $0.title = "3. Mengetahui dan memahami promo-promo yang sedang berlangsung"
-            }
+                }.cellUpdate({ (cell, row) in
+                    cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                })
             <<< TextRow(){
                 $0.tag = "dsr_sebelum_3r"
                 $0.placeholder = "Remarks:"
@@ -216,6 +238,14 @@ class DSRForm : FormViewController {
                 $0.tag = "dsr_sebelum_4er"
                 $0.placeholder = "\tRemarks:"
             }
+            <<< CheckRow(){
+                $0.tag = "dsr_sebelum_4f"
+                $0.title = "\tf. Contoh Produk NPI (bila ada)"
+            }
+            <<< TextRow(){
+                $0.tag = "dsr_sebelum_4fr"
+                $0.placeholder = "\tRemarks:"
+            }
             
             +++ Section("Pada saat kunjungan"){
                 $0.tag = "kunjungan"
@@ -225,7 +255,7 @@ class DSRForm : FormViewController {
             <<< MultipleSelectorRow<String>() {
                 $0.tag = "dsr_saat_1"
                 $0.title = "1. Perkenalan"
-                $0.options = ["Customer ke-1", "Customer ke-2", "Customer ke-3", "Customer ke-4", "Customer ke-5", "Customer ke-6", "Customer ke-7", "Customer ke-8", "Customer ke-9", "Customer ke-10"]
+                $0.options = ["Outlet ke-1", "Outlet ke-2", "Outlet ke-3", "Outlet ke-4", "Outlet ke-5", "Outlet ke-6", "Outlet ke-7", "Outlet ke-8", "Outlet ke-9", "Outlet ke-10"]
             }.cellUpdate({ (cell, row) in
                 cell.textLabel?.font = UIFont.systemFontOfSize(10)
             })
@@ -233,7 +263,7 @@ class DSRForm : FormViewController {
             <<< MultipleSelectorRow<String>() {
                 $0.tag = "dsr_saat_2"
                 $0.title = "2. Check stock produk UFS baik yang sudah didisplay di shelf maupun di gudang"
-                $0.options = ["Customer ke-1", "Customer ke-2", "Customer ke-3", "Customer ke-4", "Customer ke-5", "Customer ke-6", "Customer ke-7", "Customer ke-8", "Customer ke-9", "Customer ke-10"]
+                $0.options = ["Outlet ke-1", "Outlet ke-2", "Outlet ke-3", "Outlet ke-4", "Outlet ke-5", "Outlet ke-6", "Outlet ke-7", "Outlet ke-8", "Outlet ke-9", "Outlet ke-10"]
             }.cellUpdate({ (cell, row) in
                 cell.textLabel?.font = UIFont.systemFontOfSize(10)
             })
@@ -245,7 +275,7 @@ class DSRForm : FormViewController {
                 <<< MultipleSelectorRow<String>() {
                     $0.tag = "dsr_saat_3"
                     $0.title = "\ta. Menawarkan penambahan stock (taking order) pada customer"
-                    $0.options = ["Customer ke-1", "Customer ke-2", "Customer ke-3", "Customer ke-4", "Customer ke-5", "Customer ke-6", "Customer ke-7", "Customer ke-8", "Customer ke-9", "Customer ke-10"]
+                    $0.options = ["Outlet ke-1", "Outlet ke-2", "Outlet ke-3", "Outlet ke-4", "Outlet ke-5", "Outlet ke-6", "Outlet ke-7", "Outlet ke-8", "Outlet ke-9", "Outlet ke-10"]
                     }.cellUpdate({ (cell, row) in
                         cell.textLabel?.font = UIFont.systemFontOfSize(10)
                     })
@@ -253,7 +283,7 @@ class DSRForm : FormViewController {
                 <<< MultipleSelectorRow<String>() {
                     $0.tag = "dsr_saat_4"
                     $0.title = "\tb. Menawarkan penambahan SKU baru (NPI)"
-                    $0.options = ["Customer ke-1", "Customer ke-2", "Customer ke-3", "Customer ke-4", "Customer ke-5", "Customer ke-6", "Customer ke-7", "Customer ke-8", "Customer ke-9", "Customer ke-10"]
+                    $0.options = ["Outlet ke-1", "Outlet ke-2", "Outlet ke-3", "Outlet ke-4", "Outlet ke-5", "Outlet ke-6", "Outlet ke-7", "Outlet ke-8", "Outlet ke-9", "Outlet ke-10"]
                     }.cellUpdate({ (cell, row) in
                         cell.textLabel?.font = UIFont.systemFontOfSize(10)
                     })
@@ -261,7 +291,7 @@ class DSRForm : FormViewController {
                 <<< MultipleSelectorRow<String>() {
                     $0.tag = "dsr_saat_5"
                     $0.title = "\tc. Presentasi produk: menguasai keunggulan produk"
-                    $0.options = ["Customer ke-1", "Customer ke-2", "Customer ke-3", "Customer ke-4", "Customer ke-5", "Customer ke-6", "Customer ke-7", "Customer ke-8", "Customer ke-9", "Customer ke-10"]
+                    $0.options = ["Outlet ke-1", "Outlet ke-2", "Outlet ke-3", "Outlet ke-4", "Outlet ke-5", "Outlet ke-6", "Outlet ke-7", "Outlet ke-8", "Outlet ke-9", "Outlet ke-10"]
                     }.cellUpdate({ (cell, row) in
                         cell.textLabel?.font = UIFont.systemFontOfSize(10)
                     })
@@ -269,7 +299,7 @@ class DSRForm : FormViewController {
                 <<< MultipleSelectorRow<String>() {
                     $0.tag = "dsr_saat_6"
                     $0.title = "\td. Presentasi harga: menguasai produk"
-                    $0.options = ["Customer ke-1", "Customer ke-2", "Customer ke-3", "Customer ke-4", "Customer ke-5", "Customer ke-6", "Customer ke-7", "Customer ke-8", "Customer ke-9", "Customer ke-10"]
+                    $0.options = ["Outlet ke-1", "Outlet ke-2", "Outlet ke-3", "Outlet ke-4", "Outlet ke-5", "Outlet ke-6", "Outlet ke-7", "Outlet ke-8", "Outlet ke-9", "Outlet ke-10"]
                     }.cellUpdate({ (cell, row) in
                         cell.textLabel?.font = UIFont.systemFontOfSize(10)
                     })
@@ -277,7 +307,7 @@ class DSRForm : FormViewController {
                 <<< MultipleSelectorRow<String>() {
                     $0.tag = "dsr_saat_7"
                     $0.title = "\te. Presentasi program: menguasai program-program yang sedang berlangsung"
-                    $0.options = ["Customer ke-1", "Customer ke-2", "Customer ke-3", "Customer ke-4", "Customer ke-5", "Customer ke-6", "Customer ke-7", "Customer ke-8", "Customer ke-9", "Customer ke-10"]
+                    $0.options = ["Outlet ke-1", "Outlet ke-2", "Outlet ke-3", "Outlet ke-4", "Outlet ke-5", "Outlet ke-6", "Outlet ke-7", "Outlet ke-8", "Outlet ke-9", "Outlet ke-10"]
                     }.cellUpdate({ (cell, row) in
                         cell.textLabel?.font = UIFont.systemFontOfSize(10)
                     })
@@ -286,7 +316,7 @@ class DSRForm : FormViewController {
                 <<< MultipleSelectorRow<String>() {
                     $0.tag = "dsr_saat_8"
                     $0.title = "4. Penutupan: merekonfirmasi hasil kunjungan (jumlah orderan, dll)"
-                    $0.options = ["Customer ke-1", "Customer ke-2", "Customer ke-3", "Customer ke-4", "Customer ke-5", "Customer ke-6", "Customer ke-7", "Customer ke-8", "Customer ke-9", "Customer ke-10"]
+                    $0.options = ["Outlet ke-1", "Outlet ke-2", "Outlet ke-3", "Outlet ke-4", "Outlet ke-5", "Outlet ke-6", "Outlet ke-7", "Outlet ke-8", "Outlet ke-9", "Outlet ke-10"]
                     }.cellUpdate({ (cell, row) in
                         cell.textLabel?.font = UIFont.systemFontOfSize(10)
                     })
@@ -294,15 +324,15 @@ class DSRForm : FormViewController {
                 <<< MultipleSelectorRow<String>() {
                     $0.tag = "dsr_saat_9"
                     $0.title = "5. Melakukan merchandising"
-                    $0.options = ["Customer ke-1", "Customer ke-2", "Customer ke-3", "Customer ke-4", "Customer ke-5", "Customer ke-6", "Customer ke-7", "Customer ke-8", "Customer ke-9", "Customer ke-10"]
+                    $0.options = ["Outlet ke-1", "Outlet ke-2", "Outlet ke-3", "Outlet ke-4", "Outlet ke-5", "Outlet ke-6", "Outlet ke-7", "Outlet ke-8", "Outlet ke-9", "Outlet ke-10"]
                     }.cellUpdate({ (cell, row) in
                         cell.textLabel?.font = UIFont.systemFontOfSize(10)
                     })
                 
                 <<< MultipleSelectorRow<String>() {
                     $0.tag = "dsr_saat_10"
-                    $0.title = "6. Mengisi TRC"
-                    $0.options = ["Customer ke-1", "Customer ke-2", "Customer ke-3", "Customer ke-4", "Customer ke-5", "Customer ke-6", "Customer ke-7", "Customer ke-8", "Customer ke-9", "Customer ke-10"]
+                    $0.title = "6. Mengisi TRC/LE Mobility"
+                    $0.options = ["Outlet ke-1", "Outlet ke-2", "Outlet ke-3", "Outlet ke-4", "Outlet ke-5", "Outlet ke-6", "Outlet ke-7", "Outlet ke-8", "Outlet ke-9", "Outlet ke-10"]
                     }.cellUpdate({ (cell, row) in
                         cell.textLabel?.font = UIFont.systemFontOfSize(10)
                     })
@@ -312,23 +342,27 @@ class DSRForm : FormViewController {
                 $0.hidden = "$segments != 'Setelah'"
             }
                 <<< LabelRow(){
-                    $0.title = "Finalisasi dan Evaluasi (Tick if Done/Know)"
+                    $0.title = "Finalisasi dan Evaluasi (Tandai jika mengetahui)"
                     }.cellUpdate({ (cell, row) in
                         cell.textLabel?.font = UIFont.boldSystemFontOfSize(10)
                     })
                 <<< CheckRow(){
                     $0.tag = "dsr_setelah_1"
-                    $0.title = "1. Perkenalan"
-                }
+                    $0.title = "1. Melaporkan dan mereview hasil kunjungan kepada OM dan DTS"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
                 <<< TextRow(){
                     $0.tag = "dsr_setelah_1r"
                     $0.placeholder = "Remarks:"
                 }
                 <<< CheckRow(){
                     $0.tag = "dsr_setelah_2"
-                    $0.title = "2. Check stock produk UFS baik yang sudah \n didisplay di shelf maupun di gudang"
+                    $0.title = "2. Membuat rangkuman jumlah penjualan dan mengisi laporan dinding"
                     }.cellUpdate({ (cell, row) in
-                        cell.textLabel?.numberOfLines = 2
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
                     })
                 <<< TextRow(){
                     $0.tag = "dsr_setelah_2r"
@@ -339,6 +373,257 @@ class DSRForm : FormViewController {
                 row.title = "Save"
                 row.onCellSelection(self.saveDSRCoreData)
             }
+        }
+        else if language == "Optional(\"English\")"{
+            form =  Section(){
+                section in
+                var footer = HeaderFooterView<UITableViewHeaderFooterView>(.Class)
+                footer.onSetupView = {view in
+                    view.view.textLabel!.text = "**The following questions is a guidelines for you to coach\n the team to develop better in Selling Skills (Basic Call Procedure)"
+                    view.view.textLabel!.textColor = UIColor.orangeColor()
+                    view.view.textLabel?.numberOfLines = 2
+                    view.view.textLabel?.textAlignment = NSTextAlignment.Center
+                    view.view.textLabel!.font = UIFont.italicSystemFontOfSize(9)
+                }
+                footer.height = {30}
+                section.footer = footer
+                }
+                
+                <<< SegmentedRow<String>("segments"){
+                    $0.options = ["Before", "Visit", "After"]
+                    $0.value = "Before"
+                    }.cellUpdate({ (cell, row) in
+                        cell.tintColor = .orangeColor()
+                    })
+                
+                +++ Section()
+                
+                <<< LabelRow(){
+                    $0.title = "Coach\t\t: \(coachname)"
+                }
+                <<< LabelRow(){
+                    $0.title = "Coachee\t\t: \(coacheename)"
+                }
+                <<< TextRow(){
+                    $0.tag = "distributor"
+                    $0.title = "  Distributor\t:"
+                }
+                <<< TextRow(){
+                    $0.tag = "area"
+                    $0.title = "  Area\t\t:"
+                }
+                
+                
+                +++ Section("Before Visit"){
+                    $0.tag = "before"
+                    $0.hidden = "$segments != 'Before'"
+                }
+                <<< LabelRow(){
+                    $0.title = "Planning & Preparation (Tick if Done/Know)"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.font = UIFont.boldSystemFontOfSize(10)
+                    })
+                <<< CheckRow(){
+                    $0.tag = "dsr_sebelum_1"
+                    $0.title = "1. Re-analyze visit objective"
+                }
+                <<< TextRow(){
+                    $0.tag = "dsr_sebelum_1r"
+                    $0.placeholder = "Remarks:"
+                }
+                
+                <<< CheckRow(){
+                    $0.tag = "dsr_sebelum_2"
+                    $0.title = "2. Check warehouse stock availability"
+                }
+                <<< TextRow(){
+                    $0.tag = "dsr_sebelum_2r"
+                    $0.placeholder = "Remarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dsr_sebelum_3"
+                    $0.title = "3. Know and understand the ongoing promo"
+                }
+                <<< TextRow(){
+                    $0.tag = "dsr_sebelum_3r"
+                    $0.placeholder = "Remarks:"
+                }
+                <<< LabelRow(){
+                    $0.title = "4. Prepare tools for visit"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dsr_sebelum_4a"
+                    $0.title = "\ta. TRC, Stationery, dan Calculator"
+                }
+                <<< TextRow(){
+                    $0.tag = "dsr_sebelum_4ar"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dsr_sebelum_4b"
+                    $0.title = "\tb. Name Card"
+                }
+                <<< TextRow(){
+                    $0.tag = "dsr_sebelum_4br"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dsr_sebelum_4c"
+                    $0.title = "\tc. Product Catalog"
+                }
+                <<< TextRow(){
+                    $0.tag = "dsr_sebelum_4cr"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dsr_sebelum_4d"
+                    $0.title = "\td. Marketing Program"
+                }
+                <<< TextRow(){
+                    $0.tag = "dsr_sebelum_4dr"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dsr_sebelum_4e"
+                    $0.title = "\te. Price List"
+                }
+                <<< TextRow(){
+                    $0.tag = "dsr_sebelum_4er"
+                    $0.placeholder = "\tRemarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dsr_sebelum_4f"
+                    $0.title = "\tf. Contoh Produk NPI (bila ada)"
+                }
+                <<< TextRow(){
+                    $0.tag = "dsr_sebelum_4fr"
+                    $0.placeholder = "\tRemarks:"
+                }
+                
+                +++ Section("During Visit"){
+                    $0.tag = "Visit"
+                    $0.hidden = "$segments != 'Visit'"
+                }
+                
+                <<< MultipleSelectorRow<String>() {
+                    $0.tag = "dsr_saat_1"
+                    $0.title = "1. Introduction"
+                    $0.options = ["Customer no-1", "Customer no-2", "Customer no-3", "Customer no-4", "Customer no-5", "Customer no-6", "Customer no-7", "Customer no-8", "Customer no-9", "Customer no-10"]
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.font = UIFont.systemFontOfSize(10)
+                    })
+                
+                <<< MultipleSelectorRow<String>() {
+                    $0.tag = "dsr_saat_2"
+                    $0.title = "2. Stock check for UFS product, either on shelf or warehouse"
+                    $0.options = ["Customer no-1", "Customer no-2", "Customer no-3", "Customer no-4", "Customer no-5", "Customer no-6", "Customer no-7", "Customer no-8", "Customer no-9", "Customer no-10"]
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.font = UIFont.systemFontOfSize(10)
+                    })
+                
+                <<< LabelRow(){
+                    $0.title = "3. Presentation"
+                }
+                
+                <<< MultipleSelectorRow<String>() {
+                    $0.tag = "dsr_saat_3"
+                    $0.title = "\ta. Offers stock addition (taking order) to customer"
+                    $0.options = ["Customer no-1", "Customer no-2", "Customer no-3", "Customer no-4", "Customer no-5", "Customer no-6", "Customer no-7", "Customer no-8", "Customer no-9", "Customer no-10"]
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.font = UIFont.systemFontOfSize(10)
+                    })
+                
+                <<< MultipleSelectorRow<String>() {
+                    $0.tag = "dsr_saat_4"
+                    $0.title = "\tb. Offers new SKU (NPI)"
+                    $0.options = ["Customer no-1", "Customer no-2", "Customer no-3", "Customer no-4", "Customer no-5", "Customer no-6", "Customer no-7", "Customer no-8", "Customer no-9", "Customer no-10"]
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.font = UIFont.systemFontOfSize(10)
+                    })
+                
+                <<< MultipleSelectorRow<String>() {
+                    $0.tag = "dsr_saat_5"
+                    $0.title = "\tc. Product Presentation : mastery of product advantages"
+                    $0.options = ["Customer no-1", "Customer no-2", "Customer no-3", "Customer no-4", "Customer no-5", "Customer no-6", "Customer no-7", "Customer no-8", "Customer no-9", "Customer no-10"]
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.font = UIFont.systemFontOfSize(10)
+                    })
+                
+                <<< MultipleSelectorRow<String>() {
+                    $0.tag = "dsr_saat_6"
+                    $0.title = "\td. Price Presentation : mastery of product price"
+                    $0.options = ["Customer no-1", "Customer no-2", "Customer no-3", "Customer no-4", "Customer no-5", "Customer no-6", "Customer no-7", "Customer no-8", "Customer no-9", "Customer no-10"]
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.font = UIFont.systemFontOfSize(10)
+                    })
+                
+                <<< MultipleSelectorRow<String>() {
+                    $0.tag = "dsr_saat_7"
+                    $0.title = "\te. Program presentation : mastery of ongoing programs"
+                    $0.options = ["Customer no-1", "Customer no-2", "Customer no-3", "Customer no-4", "Customer no-5", "Customer no-6", "Customer no-7", "Customer no-8", "Customer no-9", "Customer no-10"]
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.font = UIFont.systemFontOfSize(10)
+                    })
+                
+                
+                <<< MultipleSelectorRow<String>() {
+                    $0.tag = "dsr_saat_8"
+                    $0.title = "4. Closing: reconfirms visit result (total order, etc)"
+                    $0.options = ["Customer no-1", "Customer no-2", "Customer no-3", "Customer no-4", "Customer no-5", "Customer no-6", "Customer no-7", "Customer no-8", "Customer no-9", "Customer no-10"]
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.font = UIFont.systemFontOfSize(10)
+                    })
+                
+                <<< MultipleSelectorRow<String>() {
+                    $0.tag = "dsr_saat_9"
+                    $0.title = "5. Conduct merchandising"
+                    $0.options = ["Customer no-1", "Customer no-2", "Customer no-3", "Customer no-4", "Customer no-5", "Customer no-6", "Customer no-7", "Customer no-8", "Customer no-9", "Customer no-10"]
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.font = UIFont.systemFontOfSize(10)
+                    })
+                
+                <<< MultipleSelectorRow<String>() {
+                    $0.tag = "dsr_saat_10"
+                    $0.title = "6. Fills TRC"
+                    $0.options = ["Customer no-1", "Customer no-2", "Customer no-3", "Customer no-4", "Customer no-5", "Customer no-6", "Customer no-7", "Customer no-8", "Customer no-9", "Customer no-10"]
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.font = UIFont.systemFontOfSize(10)
+                    })
+                
+                +++ Section("After Visit"){
+                    $0.tag = "After"
+                    $0.hidden = "$segments != 'After'"
+                }
+                <<< LabelRow(){
+                    $0.title = "Finalization & Evaluation"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.font = UIFont.boldSystemFontOfSize(10)
+                    })
+                <<< CheckRow(){
+                    $0.tag = "dsr_setelah_1"
+                    $0.title = "1. Report and review result to OM and DTS"
+                }
+                <<< TextRow(){
+                    $0.tag = "dsr_setelah_1r"
+                    $0.placeholder = "Remarks:"
+                }
+                <<< CheckRow(){
+                    $0.tag = "dsr_setelah_2"
+                    $0.title = "2. Summarize total sales on that day & Write it down in Wall Report"
+                    }.cellUpdate({ (cell, row) in
+                        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                        cell.textLabel!.numberOfLines = NSLineBreakMode.ByWordWrapping.rawValue
+                    })
+                <<< TextRow(){
+                    $0.tag = "dsr_setelah_2r"
+                    $0.placeholder = "Remarks:"
+                }
+                
+                <<< ButtonRow("save") {row in
+                    row.title = "Save"
+                    row.onCellSelection(self.saveDSRCoreData)
+            }
+        }
         
         print(AppDelegate.getAppDelegate().getDocDir())
     }
@@ -417,6 +702,14 @@ class DSRForm : FormViewController {
         if let dsr_sebelum_4er = self.form.rowByTag("dsr_sebelum_4er")?.baseValue as? String
         {
             self.dsr_sebelum_4er = dsr_sebelum_4er
+        }
+        if let dsr_sebelum_4f = self.form.rowByTag("dsr_sebelum_4f")?.baseValue as? Bool
+        {
+            self.dsr_sebelum_4f = dsr_sebelum_4f
+        }
+        if let dsr_sebelum_4fr = self.form.rowByTag("dsr_sebelum_4fr")?.baseValue as? String
+        {
+            self.dsr_sebelum_4fr = dsr_sebelum_4fr
         }
         
         
@@ -508,9 +801,12 @@ class DSRForm : FormViewController {
         let question4e = QuestionObject(columnID: "", questionID: "dsr_sebelum_4e", textAnswer: self.dsr_sebelum_4er, tickAnswer: self.dsr_sebelum_4e)
         questionarray.append(question4e.toAnyObject())
         
+        let question4f = QuestionObject(columnID: "", questionID: "dsr_sebelum_4f", textAnswer: self.dsr_sebelum_4fr, tickAnswer: self.dsr_sebelum_4f)
+        questionarray.append(question4f.toAnyObject())
+        
         
         for index in 1...10{
-            if dsr_saat_1.contains("Customer ke-\(index)"){
+            if dsr_saat_1.contains("Outlet ke-\(index)"){
                 let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_1", textAnswer: "", tickAnswer: true)
                 questionarray.append(customer.toAnyObject())
             }
@@ -520,7 +816,7 @@ class DSRForm : FormViewController {
             }
         }
         for index in 1...10{
-            if dsr_saat_2.contains("Customer ke-\(index)"){
+            if dsr_saat_2.contains("Outlet ke-\(index)"){
                 let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_2", textAnswer: "", tickAnswer: true)
                 questionarray.append(customer.toAnyObject())
             }
@@ -530,7 +826,7 @@ class DSRForm : FormViewController {
             }
         }
         for index in 1...10{
-            if dsr_saat_3.contains("Customer ke-\(index)"){
+            if dsr_saat_3.contains("Outlet ke-\(index)"){
                 let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_3", textAnswer: "", tickAnswer: true)
                 questionarray.append(customer.toAnyObject())
             }
@@ -540,7 +836,7 @@ class DSRForm : FormViewController {
             }
         }
         for index in 1...10{
-            if dsr_saat_4.contains("Customer ke-\(index)"){
+            if dsr_saat_4.contains("Outlet ke-\(index)"){
                 let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_4", textAnswer: "", tickAnswer: true)
                 questionarray.append(customer.toAnyObject())
             }
@@ -550,7 +846,7 @@ class DSRForm : FormViewController {
             }
         }
         for index in 1...10{
-            if dsr_saat_5.contains("Customer ke-\(index)"){
+            if dsr_saat_5.contains("Outlet ke-\(index)"){
                 let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_5", textAnswer: "", tickAnswer: true)
                 questionarray.append(customer.toAnyObject())
             }
@@ -560,7 +856,7 @@ class DSRForm : FormViewController {
             }
         }
         for index in 1...10{
-            if dsr_saat_6.contains("Customer ke-\(index)"){
+            if dsr_saat_6.contains("Outlet ke-\(index)"){
                 let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_6", textAnswer: "", tickAnswer: true)
                 questionarray.append(customer.toAnyObject())
             }
@@ -570,7 +866,7 @@ class DSRForm : FormViewController {
             }
         }
         for index in 1...10{
-            if dsr_saat_7.contains("Customer ke-\(index)"){
+            if dsr_saat_7.contains("Outlet ke-\(index)"){
                 let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_7", textAnswer: "", tickAnswer: true)
                 questionarray.append(customer.toAnyObject())
             }
@@ -580,7 +876,7 @@ class DSRForm : FormViewController {
             }
         }
         for index in 1...10{
-            if dsr_saat_8.contains("Customer ke-\(index)"){
+            if dsr_saat_8.contains("Outlet ke-\(index)"){
                 let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_8", textAnswer: "", tickAnswer: true)
                 questionarray.append(customer.toAnyObject())
             }
@@ -590,7 +886,7 @@ class DSRForm : FormViewController {
             }
         }
         for index in 1...10{
-            if dsr_saat_9.contains("Customer ke-\(index)"){
+            if dsr_saat_9.contains("Outlet ke-\(index)"){
                 let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_9", textAnswer: "", tickAnswer: true)
                 questionarray.append(customer.toAnyObject())
             }
@@ -600,7 +896,7 @@ class DSRForm : FormViewController {
             }
         }
         for index in 1...10{
-            if dsr_saat_10.contains("Customer ke-\(index)"){
+            if dsr_saat_10.contains("Outlet ke-\(index)"){
                 let customer = QuestionObject(columnID: "customer_\(index)", questionID: "dsr_saat_10", textAnswer: "", tickAnswer: true)
                 questionarray.append(customer.toAnyObject())
             }
@@ -705,6 +1001,14 @@ class DSRForm : FormViewController {
         {
             self.dsr_sebelum_4er = dsr_sebelum_4er
         }
+        if let dsr_sebelum_4f = self.form.rowByTag("dsr_sebelum_4f")?.baseValue as? Bool
+        {
+            self.dsr_sebelum_4f = dsr_sebelum_4f
+        }
+        if let dsr_sebelum_4fr = self.form.rowByTag("dsr_sebelum_4fr")?.baseValue as? String
+        {
+            self.dsr_sebelum_4fr = dsr_sebelum_4fr
+        }
         
         if let dsr_saat_1 = self.form.rowByTag("dsr_saat_1")?.baseValue as? Set<String>
         {
@@ -776,9 +1080,10 @@ class DSRForm : FormViewController {
         self.saveQuestionData("", questionID: "dsr_sebelum_4c",textAnswer: self.dsr_sebelum_4cr,tickAnswer: self.dsr_sebelum_4c, id: csession)
         self.saveQuestionData("", questionID: "dsr_sebelum_4d",textAnswer: self.dsr_sebelum_4dr,tickAnswer: self.dsr_sebelum_4d, id: csession)
         self.saveQuestionData("", questionID: "dsr_sebelum_4e",textAnswer: self.dsr_sebelum_4er,tickAnswer: self.dsr_sebelum_4e, id: csession)
+        self.saveQuestionData("", questionID: "dsr_sebelum_4f",textAnswer: self.dsr_sebelum_4fr,tickAnswer: self.dsr_sebelum_4f, id: csession)
         
         for index in 1...10{
-            if dsr_saat_1.contains("Customer ke-\(index)"){
+            if dsr_saat_1.contains("Outlet ke-\(index)"){
                 self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_1", textAnswer: "", tickAnswer: true, id: csession)
             }
             else{
@@ -787,7 +1092,7 @@ class DSRForm : FormViewController {
             }
         }
         for index in 1...10{
-            if dsr_saat_2.contains("Customer ke-\(index)"){
+            if dsr_saat_2.contains("Outlet ke-\(index)"){
                 self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_2", textAnswer: "", tickAnswer: true, id: csession)
                 
             }
@@ -797,7 +1102,7 @@ class DSRForm : FormViewController {
             }
         }
         for index in 1...10{
-            if dsr_saat_3.contains("Customer ke-\(index)"){
+            if dsr_saat_3.contains("Outlet ke-\(index)"){
                 self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_3", textAnswer: "", tickAnswer: true, id: csession)
                 
             }
@@ -807,7 +1112,7 @@ class DSRForm : FormViewController {
             }
         }
         for index in 1...10{
-            if dsr_saat_4.contains("Customer ke-\(index)"){
+            if dsr_saat_4.contains("Outlet ke-\(index)"){
                 self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_4", textAnswer: "", tickAnswer: true, id: csession)
                 
             }
@@ -817,7 +1122,7 @@ class DSRForm : FormViewController {
             }
         }
         for index in 1...10{
-            if dsr_saat_5.contains("Customer ke-\(index)"){
+            if dsr_saat_5.contains("Outlet ke-\(index)"){
                 self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_5", textAnswer: "", tickAnswer: true, id: csession)
                 
             }
@@ -827,7 +1132,7 @@ class DSRForm : FormViewController {
             }
         }
         for index in 1...10{
-            if dsr_saat_6.contains("Customer ke-\(index)"){
+            if dsr_saat_6.contains("Outlet ke-\(index)"){
                 self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_6", textAnswer: "", tickAnswer: true, id: csession)
                 
             }
@@ -837,7 +1142,7 @@ class DSRForm : FormViewController {
             }
         }
         for index in 1...10{
-            if dsr_saat_7.contains("Customer ke-\(index)"){
+            if dsr_saat_7.contains("Outlet ke-\(index)"){
                 self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_7", textAnswer: "", tickAnswer: true, id: csession)
                 
             }
@@ -847,7 +1152,7 @@ class DSRForm : FormViewController {
             }
         }
         for index in 1...10{
-            if dsr_saat_8.contains("Customer ke-\(index)"){
+            if dsr_saat_8.contains("Outlet ke-\(index)"){
                 self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_8", textAnswer: "", tickAnswer: true, id: csession)
                 
             }
@@ -857,7 +1162,7 @@ class DSRForm : FormViewController {
             }
         }
         for index in 1...10{
-            if dsr_saat_9.contains("Customer ke-\(index)"){
+            if dsr_saat_9.contains("Outlet ke-\(index)"){
                 self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_9", textAnswer: "", tickAnswer: true, id: csession)
                 
             }
@@ -867,7 +1172,7 @@ class DSRForm : FormViewController {
             }
         }
         for index in 1...10{
-            if dsr_saat_10.contains("Customer ke-\(index)"){
+            if dsr_saat_10.contains("Outlet ke-\(index)"){
                 self.saveQuestionData("customer_\(index)", questionID: "dsr_saat_10", textAnswer: "", tickAnswer: true, id: csession)
                 
             }

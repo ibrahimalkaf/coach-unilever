@@ -130,7 +130,10 @@ class page2: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let mailComposerVC = MFMailComposeViewController()
         
         //set recepient
+        //ganti ke coachee dan teman2
         mailComposerVC.setToRecipients(["bim.alf@gmail.com"])
+        
+        
         mailComposerVC.setSubject("Sending you an in-app e-mail...")
         mailComposerVC.setMessageBody("Sending e-mail in-app is not so bad!", isHTML: false)
         

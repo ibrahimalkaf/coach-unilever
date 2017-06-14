@@ -73,6 +73,7 @@ class syncCell: UITableViewCell {
         savecoachingtofirebase(csession)
         saveformtofirebase(csession)
         sendMailErrorAlert.show()
+        
     }
     
     func savecoachingtofirebase(id:String){
@@ -181,6 +182,7 @@ class syncCell: UITableViewCell {
         }
     }
     
+    
     func createFASAAsHTML() {
         invoiceComposer = PDFFormComposer()
         if let invoiceHTML = invoiceComposer.renderFASA(self.Date.text!,coachee: self.Coache.text!,csession: self.csession){
@@ -194,5 +196,35 @@ class syncCell: UITableViewCell {
             HTMLContent = invoiceHTML
         }
     }
+    
+    func sendingEmail(){
+        //let window: UIWindow?
+        let mailComposeViewController = configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            
+        self.window?.rootViewController?.presentViewController(mailComposeViewController, animated: true, completion: nil)
+            
+        } else {
+            self.showSendMailErrorAlert()
+        }
+    }
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        
+        
+        mailComposerVC.setSubject("Sending report")
+        mailComposerVC.setMessageBody("This is report generated", isHTML: false)
+        
+        mailComposerVC.addAttachmentData(NSData(contentsOfFile: AppDelegate.getAppDelegate().getDocDir())!, mimeType: "application/pdf", fileName: csession)
+        
+        return mailComposerVC
+    }
+    
+    func showSendMailErrorAlert() {
+        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        sendMailErrorAlert.show()
+    }
+    
     
 }

@@ -41,7 +41,7 @@ class LoginEureka : FormViewController {
                 $0.disabled = true
                 }
                 .cellUpdate { cell, row in
-                    cell.backgroundColor = self.UIColorFromRGB(0x209624)
+                    cell.backgroundColor = .orangeColor()
                     cell.textLabel?.font = UIFont.systemFontOfSize(12)
                     cell.textLabel?.numberOfLines = 1
                     cell.textLabel?.textAlignment = .Center
@@ -51,7 +51,7 @@ class LoginEureka : FormViewController {
             +++ Section()
             
             <<< TextRow("email"){
-                $0.title = "Email"
+                $0.title = " Email"
                 $0.tag = "emailtext"
                 
             }.cellSetup { cell, row in
@@ -59,7 +59,7 @@ class LoginEureka : FormViewController {
             }
             
             <<< PasswordRow("password"){
-                $0.title = "Password"
+                $0.title = " Password"
                 $0.tag = "passwordtext"
             }.cellSetup { cell, row in
                     cell.titleLabel?.highlightedTextColor = .orangeColor()
@@ -68,7 +68,7 @@ class LoginEureka : FormViewController {
             <<< AlertRow<String>() {
                 $0.title = "Position"
                 $0.selectorTitle = "Select Position"
-                $0.options = ["Managing Director","NSM Push","NSM Pull","NSM Chain","NSM Hotel","CD Capability Building Manager","RSM Pull","RSM Push","ASM Pull","ASM Push","Asst. CD Capability Building Manager","DTS Push","SR Pull Bareca","SR Pull Hotel","OM Dist.","DSS","DSR","CD Ops Manager","Asst. CD Ops Manager","Supply Chain","Marketing","Finance","Chef","R&D"]
+                $0.options = ["Managing Director","NSM Push","NSM Pull","NSM Chain","NSM Hotel","CD Capability Building Manager","RSM Pull","RSM Push","ASM Pull","ASM Push","Asst. CD Capability Building Manager","DTS Push","SR Pull Bareca","SR Pull Hotel","OM Dist.","DSS","DSR","CD Ops Manager","Asst. CD Ops Manager","Supply Chain","Marketing","Finance","Chef","R&D","Chef", "HR", "SCC Business Development Manager"]
                 $0.value = "Select Position"
                 }.onChange { row in
                     print(row.value)
@@ -93,7 +93,7 @@ class LoginEureka : FormViewController {
                 $0.disabled = true
             }
             .cellUpdate { cell, row in
-                cell.backgroundColor = self.UIColorFromRGB(0x209624)
+                cell.backgroundColor = .orangeColor()
                 cell.textLabel?.font = UIFont.systemFontOfSize(12)
                 cell.textLabel?.numberOfLines = 2
                 cell.textLabel?.textAlignment = .Center

@@ -28,9 +28,9 @@ class CoachingProfile : FormViewController {
     var stManagerEmail : String = ""
     var stManagerPosition : String = ""
     
-    var ndManagerName : String = ""
-    var ndManagerEmail : String = ""
-    var ndManagerPosition : String = ""
+    //var ndManagerName : String = ""
+    //var ndManagerEmail : String = ""
+    //var ndManagerPosition : String = ""
     
     var cdName : String = ""
     var cdEmail : String = ""
@@ -72,14 +72,9 @@ class CoachingProfile : FormViewController {
             
             +++ Section("Coach")
             
-            <<< NameRow(){
-                $0.tag = "coachName"
-                $0.value = self.coachName
-                }.cellUpdate { cell, row in
-                cell.textField.placeholder = "Name"
-            }
+
             <<< EmailRow(){
-                $0.value = cUSerEmail
+                $0.value = " "+cUSerEmail
                 $0.disabled = true
                 }.cellUpdate { cell, row in
                 row.tag = "coachEmail"
@@ -88,7 +83,7 @@ class CoachingProfile : FormViewController {
             <<< AlertRow<String>() {
                 $0.title = "Position"
                 $0.selectorTitle = "Position"
-                $0.options = ["Managing Director","NSM Push","NSM Pull","NSM Chain","NSM Hotel","CD Capability Building Manager","RSM Pull","RSM Push","ASM Pull","ASM Push","Asst. CD Capability Building Manager","DTS Push","SR Pull Bareca","SR Pull Hotel","OM Dist.","DSS","DSR","CD Ops Manager","Asst. CD Ops Manager","Supply Chain","Marketing","Finance","Chef","R&D"]
+                $0.options = ["Managing Director","NSM Push","NSM Pull","NSM Chain","NSM Hotel","CD Capability Building Manager","RSM Pull","RSM Push","ASM Pull","ASM Push","Asst. CD Capability Building Manager","DTS Push","SR Pull Bareca","SR Pull Hotel","OM Dist.","DSS","DSR","CD Ops Manager","Asst. CD Ops Manager","Supply Chain","Marketing","Finance","Chef","R&D", "Chef", "HR", "SCC Business Development Manager"]
                 $0.value = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.position
                 )
                 }.onChange { row in
@@ -102,17 +97,13 @@ class CoachingProfile : FormViewController {
             +++ Section("Coachee")
            
             <<< NameRow().cellUpdate { cell, row in
-                row.tag = "coacheeName"
-                cell.textField.placeholder = "Name"
-            }
-            <<< NameRow().cellUpdate { cell, row in
                 row.tag = "coacheeEmail"
-                cell.textField.placeholder = "Email"
+                cell.textField.placeholder = " Email"
             }
             <<< AlertRow<String>() {
                 $0.title = "Position"
                 $0.selectorTitle = "Position"
-                $0.options = ["Managing Director","NSM Push","NSM Pull","NSM Chain","NSM Hotel","CD Capability Building Manager","RSM Pull","RSM Push","ASM Pull","ASM Push","Asst. CD Capability Building Manager","DTS Push","SR Pull Bareca","SR Pull Hotel","OM Dist.","DSS","DSR","CD Ops Manager","Asst. CD Ops Manager","Supply Chain","Marketing","Finance","Chef","R&D"]
+                $0.options = ["Managing Director","NSM Push","NSM Pull","NSM Chain","NSM Hotel","CD Capability Building Manager","RSM Pull","RSM Push","ASM Pull","ASM Push","Asst. CD Capability Building Manager","DTS Push","SR Pull Bareca","SR Pull Hotel","OM Dist.","DSS","DSR","CD Ops Manager","Asst. CD Ops Manager","Supply Chain","Marketing","Finance","Chef","R&D", "Chef", "HR", "SCC Business Development Manager"]
                 $0.value = "Select Position"
                 }.onChange { row in
                     self.coacheePosition = row.value!
@@ -125,12 +116,8 @@ class CoachingProfile : FormViewController {
             +++ Section("1st Line Manager")
             
             <<< NameRow().cellUpdate { cell, row in
-                row.tag = "stManagerName"
-                cell.textField.placeholder = "Name"
-            }
-            <<< NameRow().cellUpdate { cell, row in
                 row.tag = "stManagerEmail"
-                cell.textField.placeholder = "Email"
+                cell.textField.placeholder = " Email"
             }
             <<< AlertRow<String>() {
                 $0.title = "Position"
@@ -144,15 +131,14 @@ class CoachingProfile : FormViewController {
                 .onPresent{ _, to in
                     to.view.tintColor = .orangeColor()
             }
+            
+            /*
             +++ Section("2nd Line Manager")
             
-            <<< NameRow().cellUpdate { cell, row in
-                row.tag = "ndManagerName"
-                cell.textField.placeholder = "Name"
-            }
+
             <<< NameRow().cellUpdate { cell, row in
                 row.tag = "ndManagerEmail"
-                cell.textField.placeholder = "Email"
+                cell.textField.placeholder = " Email"
             }
             <<< AlertRow<String>() {
                 $0.title = "Position"
@@ -165,22 +151,18 @@ class CoachingProfile : FormViewController {
                 }
                 .onPresent{ _, to in
                     to.view.tintColor = .orangeColor()
-            }
+            }*/
         
             +++ Section("CD Capability Team")
             
             <<< NameRow().cellUpdate { cell, row in
-                row.tag = "cdCapabilityName"
-                cell.textField.placeholder = "Name"
-            }
-            <<< NameRow().cellUpdate { cell, row in
                 row.tag = "cdCapabilityEmail"
-                cell.textField.placeholder = "Email"
+                cell.textField.placeholder = " Email"
             }
             <<< AlertRow<String>() {
                 $0.title = "Position"
                 $0.selectorTitle = "Position"
-                $0.options = ["Managing Director","NSM Push","NSM Pull","NSM Chain","NSM Hotel","CD Capability Building Manager","RSM Pull","RSM Push","ASM Pull","ASM Push","Asst. CD Capability Building Manager","DTS Push","SR Pull Bareca","SR Pull Hotel","OM Dist.","DSS","DSR","CD Ops Manager","Asst. CD Ops Manager","Supply Chain","Marketing","Finance","Chef","R&D"]
+                $0.options = ["CD Capability Building Manager","Asst. CD Capability Building Manager","CD Ops Manager","Asst. CD Ops Manager"]
                 $0.value = "Select Position"
                 }.onChange { row in
                     self.cdPosition = row.value!
@@ -241,7 +223,7 @@ class CoachingProfile : FormViewController {
         {
             self.stManagerEmail = email
         }
-        
+        /*
         if let nama = dict["ndManagerName"] as? String
         {
             self.ndManagerName = nama
@@ -250,7 +232,7 @@ class CoachingProfile : FormViewController {
         if let email = dict["ndManagerEmail"] as? String
         {
             self.ndManagerEmail = email
-        }
+        }*/
         
         if let nama = dict["cdCapabilityName"] as? String
         {
@@ -264,11 +246,11 @@ class CoachingProfile : FormViewController {
         
         let unixTime = NSDate().timeIntervalSince1970
             
-        if self.coacheeName != "" && self.coacheeEmail != "" && self.stManagerName != "" && self.stManagerEmail != "" && self.ndManagerName != "" && self.ndManagerEmail != "" && self.cdName != "" && self.cdEmail != "" && self.coacheePosition != "Select Position" && self.stManagerPosition != "Select Position" && self.ndManagerPosition != "Select Position" && self.cdPosition != "Select Position" {
+        if self.coacheeName != "" && self.coacheeEmail != "" && self.stManagerName != "" && self.stManagerEmail != ""  && self.cdName != "" && self.cdEmail != "" && self.coacheePosition != "Select Position" && self.stManagerPosition != "Select Position" &&  self.cdPosition != "Select Position" {
         
         //simpan ke database coaching
         // 2
-        let coachingItem = CoachingObject(action: "", area: "", store: "", distributor: "", coachID: (FIRAuth.auth()?.currentUser?.uid)!, coachName: self.coachName, coachingGuideline: 0, date: unixTime, dateCreated: unixTime, coacheeName: self.coacheeName, coacheePosition: self.coacheePosition, coacheeEmail: self.coacheeEmail, firstManagerName: self.stManagerName, firstManagerEmail: self.stManagerEmail, firstManagerPosition: self.stManagerPosition, secondManagerName: self.ndManagerName, secondManagerEmail: self.ndManagerEmail, secondManagerPosition: self.ndManagerPosition, cdCapabilityTeamName: self.cdName, cdCapabilityTeamEmail: self.cdEmail, cdCapabilityTeamPosition: self.cdPosition)
+        let coachingItem = CoachingObject(action: "", area: "", store: "", distributor: "", coachID: (FIRAuth.auth()?.currentUser?.uid)!, coachName: self.coachName, coachingGuideline: 0, date: unixTime, dateCreated: unixTime, coacheeName: self.coacheeName, coacheePosition: self.coacheePosition, coacheeEmail: self.coacheeEmail, firstManagerName: self.stManagerName, firstManagerEmail: self.stManagerEmail, firstManagerPosition: self.stManagerPosition, secondManagerName: "", secondManagerEmail: "", secondManagerPosition: "", cdCapabilityTeamName: self.cdName, cdCapabilityTeamEmail: self.cdEmail, cdCapabilityTeamPosition: self.cdPosition)
 
         
         // 4
@@ -281,7 +263,7 @@ class CoachingProfile : FormViewController {
         
         //simpan ke database user
         NSUserDefaults.standardUserDefaults().setObject(self.coachName, forKey: KeyLocal.coachname)
-        NSUserDefaults.standardUserDefaults().setObject(self.coacheeName, forKey: KeyLocal.coacheename)
+        NSUserDefaults.standardUserDefaults().setObject(self.coacheeName, forKey: KeyLocal.coacheemail)
         NSUserDefaults.standardUserDefaults().setObject(self.coachPosition, forKey: KeyLocal.position)
             
             
@@ -334,6 +316,7 @@ class CoachingProfile : FormViewController {
             self.stManagerEmail = email
         }
         
+        /*
         if let nama = dict["ndManagerName"] as? String
         {
             self.ndManagerName = nama
@@ -343,7 +326,7 @@ class CoachingProfile : FormViewController {
         {
             self.ndManagerEmail = email
         }
-        
+        */
         if let nama = dict["cdCapabilityName"] as? String
         {
             self.cdName = nama
@@ -358,7 +341,7 @@ class CoachingProfile : FormViewController {
         
         //cek apakah form sudah komplit
         
-        if self.coacheeName != "" && self.coacheeEmail != "" && self.stManagerName != "" && self.stManagerEmail != "" && self.ndManagerName != "" && self.ndManagerEmail != "" && self.cdName != "" && self.cdEmail != "" && self.coacheePosition != "" && self.stManagerPosition != "" && self.ndManagerPosition != "" && self.cdPosition != "" {
+        if self.coacheeEmail != "" && self.stManagerEmail != "" &&  self.cdEmail != "" && self.coacheePosition != "" && self.stManagerPosition != "" && self.cdPosition != "" {
             print("pencet")
             
             // setting key session buat id coaching
@@ -389,10 +372,11 @@ class CoachingProfile : FormViewController {
             managedObject.setValue(self.stManagerEmail, forKey: "firstManagerEmail")
             managedObject.setValue(self.stManagerPosition, forKey: "firstManagerPosition")
             
+            /*
             managedObject.setValue(self.ndManagerName, forKey: "secondManagerName")
             managedObject.setValue(self.ndManagerEmail, forKey: "secondManagerEmail")
             managedObject.setValue(self.ndManagerPosition, forKey: "secondManagerPosition")
-            
+            */
             managedObject.setValue(self.cdName, forKey: "cdCapabilityTeamName")
             managedObject.setValue(self.cdEmail, forKey: "cdCapabilityTeamEmail")
             managedObject.setValue(self.cdPosition, forKey: "cdCapabilityTeamPosition")
@@ -404,8 +388,9 @@ class CoachingProfile : FormViewController {
             managedObject.setValue(unixTimeS, forKey: "dateCreated")
             managedObject.setValue(coachingItemRef.key, forKey: "id")
             
-            NSUserDefaults.standardUserDefaults().setObject(self.coachName, forKey: KeyLocal.coachname)
-            NSUserDefaults.standardUserDefaults().setObject(self.coacheeName, forKey: KeyLocal.coacheename)
+            NSUserDefaults.standardUserDefaults().setObject(self.coachEmail, forKey: KeyLocal.coachname)
+            NSUserDefaults.standardUserDefaults().setObject(self.coacheeEmail, forKey: KeyLocal.coacheemail)
+            
             NSUserDefaults.standardUserDefaults().setValue(coachingItemRef.key, forKey: KeyLocal.coachingSession)
             
             self.clearCookies()

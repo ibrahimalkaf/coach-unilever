@@ -21,7 +21,7 @@ class FASAForm : FormViewController {
         super.viewDidLoad()
         
         let coachname = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.coachname) as String!
-        let coacheename = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.coacheename) as String!
+        let coacheename = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.coacheemail) as String!
         self.coachingsession = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.coachingSession)!
         
         TextRow.defaultCellUpdate = { cell, row in
@@ -42,7 +42,7 @@ class FASAForm : FormViewController {
             cell.textLabel?.textColor = .blackColor()
         }
         
-        
+            
         form = Section(){
                 section in
                 var footer = HeaderFooterView<UITableViewHeaderFooterView>(.Class)
@@ -71,7 +71,7 @@ class FASAForm : FormViewController {
             }
             <<< TextRow(){
                 $0.tag = "store"
-                $0.title = "Store:"
+                $0.title = "  Store\t:"
             }
             +++ Section("Top SKU Product") { section in
                 section.header = HeaderFooterView(title: "Top SKU Product")
@@ -88,7 +88,7 @@ class FASAForm : FormViewController {
             )
             
             <<< ButtonRow() {row in
-                row.title = "Produk 1"
+                row.title = "Blue Band MCM 15kg/16kg"
                 row.tag = "Produk1"
                 //if NSUserDefaults.standardUserDefaults().boolForKey("1fa_done"){
                 //    row.title = "Produk 1 ✓"
@@ -97,7 +97,7 @@ class FASAForm : FormViewController {
                 row.presentationMode = .SegueName(segueName: "FASAQ1Segue", completionCallback: nil)
             }
             <<< ButtonRow() {row in
-                row.title = "Produk 2"
+                row.title = "Bango Kecap Manis 1.7kg"
                 //if NSUserDefaults.standardUserDefaults().boolForKey("2fa_done"){
                 //    row.title = "Produk 2 ✓"
                 //    self.reloadInputViews()
@@ -105,43 +105,45 @@ class FASAForm : FormViewController {
                 row.presentationMode = .SegueName(segueName: "FASAQ2Segue", completionCallback: nil)
             }
             <<< ButtonRow() {row in
-                row.title = "Produk 3"
+                row.title = "Blue Band Original 4.5kg"
                 row.presentationMode = .SegueName(segueName: "FASAQ3Segue", completionCallback: nil)
             }
             <<< ButtonRow() {row in
-                row.title = "Produk 4"
+                row.title = "Knorr Chicken Powder Refill 1Kg"
                 row.presentationMode = .SegueName(segueName: "FASAQ4Segue", completionCallback: nil)
             }
             <<< ButtonRow() {row in
-                row.title = "Produk 5"
+                row.title = "Royco Chicken 1kg"
                 row.presentationMode = .SegueName(segueName: "FASAQ5Segue", completionCallback: nil)
-        }
+            }
             <<< ButtonRow() {row in
-                row.title = "Produk 6"
+                row.title = "Knorr Mashed Potato 4kg"
                 row.presentationMode = .SegueName(segueName: "FASAQ6Segue", completionCallback: nil)
-        }
+            }
             <<< ButtonRow() {row in
-                row.title = "Produk 7"
+                row.title = "Knorr Oyster Sauce Bottle 975g"
                 row.presentationMode = .SegueName(segueName: "FASAQ7Segue", completionCallback: nil)
-        }
+            }
             <<< ButtonRow() {row in
-                row.title = "Produk 8"
+                row.title = "SariWangi Celup Jumbo"
                 row.presentationMode = .SegueName(segueName: "FASAQ8Segue", completionCallback: nil)
-        }
+            }
             <<< ButtonRow() {row in
-                row.title = "Produk 9"
+                row.title = "Royco Ayam Kuning 600g"
                 row.presentationMode = .SegueName(segueName: "FASAQ9Segue", completionCallback: nil)
-        }
+            }
             <<< ButtonRow() {row in
-                row.title = "Produk 10"
+                row.title = "Royco Rendang 525g"
                 row.presentationMode = .SegueName(segueName: "FASAQ10Segue", completionCallback: nil)
-        }
-        +++ Section()
+            }
+            +++ Section()
             <<< ButtonRow("save") {row in
                 row.title = "Save"
                 row.onCellSelection(self.prosesToSummary)
-        }
+            }
             
+        
+        
     }
     
     func prosesToSummary(cell: ButtonCellOf<String>, row: ButtonRow){
@@ -201,12 +203,13 @@ class FASAForm : FormViewController {
                                        style: .Default) { (action: UIAlertAction) -> Void in
                                         
                                         let textField = alert.textFields![0]
+                                        let size = alert.textFields![1]
                                         //let groceryItem = GroceryItem(name: (textField.text!), addedByUser: self.user.email, completed: false)
                                         //self.items.append(groceryItem)
                                         if (self.tambahanproduct == 0){
                                         self.form.sectionByTag("Top_SKU_Product")!
                                                 <<< ButtonRow(){ row in
-                                                    row.title = textField.text
+                                                    row.title = textField.text!+" "+size.text!
                                                     row.presentationMode = .SegueName(segueName: "FASAQ11Segue", completionCallback: nil)
                                                     }
                                                 self.tableView!.reloadData()
@@ -215,7 +218,7 @@ class FASAForm : FormViewController {
                                         else if (self.tambahanproduct == 1){
                                             self.form.sectionByTag("Top_SKU_Product")!
                                                 <<< ButtonRow(){ row in
-                                                    row.title = textField.text
+                                                    row.title = textField.text!+" "+size.text!
                                                     row.presentationMode = .SegueName(segueName: "FASAQ12Segue", completionCallback: nil)
                                             }
                                             self.tableView!.reloadData()
