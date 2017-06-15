@@ -170,7 +170,7 @@ class DTSForm : FormViewController {
             
             <<< SegmentedRow<String>("segments"){
                 $0.options = ["GENERAL", "REPORTING", "INFRA","TEAM"]
-                $0.value = "SEBELUM"
+                $0.value = "GENERAL"
                 }.cellUpdate({ (cell, row) in
                     cell.tintColor = .orangeColor()
                     cell.textLabel!.numberOfLines = 2
@@ -199,7 +199,7 @@ class DTSForm : FormViewController {
             
             +++ Section("GENERAL"){
                 $0.header?.title = "SEBELUM TIBA DI DISTRIBUTOR"
-                $0.hidden = "$segments != 'SEBELUM'"
+                $0.hidden = "$segments != 'GENERAL'"
             }
             <<< LabelRow(){
                 $0.title = "TERRITORY PROFILE"
@@ -401,7 +401,7 @@ class DTSForm : FormViewController {
             
             +++ Section("REPORTING"){
                 $0.header?.title = "DI DISTRIBUTOR (REPORT)"
-                $0.hidden = "$segments != 'REPORT'"
+                $0.hidden = "$segments != 'REPORTING'"
             }
 
             <<< LabelRow(){
@@ -657,7 +657,7 @@ class DTSForm : FormViewController {
             
             +++ Section("TEAM"){
                 $0.header?.title = "DI PASAR (dengan DSR)"
-                $0.hidden = "$segments != 'DSR'"
+                $0.hidden = "$segments != 'TEAM'"
             }
             
             <<< CheckRow(){
@@ -723,7 +723,7 @@ class DTSForm : FormViewController {
                 
                 <<< SegmentedRow<String>("segments"){
                     $0.options = ["GENERAL", "REPORTING", "INFRA","TEAM"]
-                    $0.value = "BEFORE"
+                    $0.value = "GENERAL"
                     }.cellUpdate({ (cell, row) in
                         cell.tintColor = .orangeColor()
                         cell.textLabel!.numberOfLines = 2
@@ -752,7 +752,7 @@ class DTSForm : FormViewController {
                 
                 +++ Section("GENERAL"){
                     $0.header?.title = "BEFORE ARRIVING IN DISTRIBUTOR"
-                    $0.hidden = "$segments != 'BEFORE'"
+                    $0.hidden = "$segments != 'GENERAL'"
                 }
                 <<< LabelRow(){
                     $0.title = "TERRITORY PROFILE MASTERY"
@@ -953,7 +953,7 @@ class DTSForm : FormViewController {
                 
                 +++ Section("REPORTING"){
                     $0.header?.title = "AT DISTRIBUTOR (REPORT)"
-                    $0.hidden = "$segments != 'REPORT'"
+                    $0.hidden = "$segments != 'REPORTING'"
                 }
                 
                 <<< LabelRow(){
@@ -1209,7 +1209,7 @@ class DTSForm : FormViewController {
                 
                 +++ Section("TEAM"){
                     $0.header?.title = "AT THE PASAR (with DSR)"
-                    $0.hidden = "$segments != 'DSR'"
+                    $0.hidden = "$segments != 'TEAM'"
                 }
                 
                 <<< CheckRow(){

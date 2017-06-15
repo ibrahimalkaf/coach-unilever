@@ -475,7 +475,7 @@ class PDFFormComposer: NSObject {
     }
     
     
-    func exportHTMLContentToPDF(HTMLContent: String) {
+    func exportHTMLContentToPDF(HTMLContent: String) -> String {
         let printPageRenderer = DSRPrintPageRenderer()
         
         let printFormatter = UIMarkupTextPrintFormatter(markupText: HTMLContent)
@@ -486,10 +486,10 @@ class PDFFormComposer: NSObject {
         pdfFilename = "\(AppDelegate.getAppDelegate().getDocDir())/Report\(invoiceNumber).pdf"
         pdfData.writeToFile(pdfFilename, atomically: true)
         
-        print(pdfFilename)
+        return pdfFilename
     }
     
-    func exportHTMLContentToPDF(HTMLContent: String, filename:String) {
+    func exportHTMLContentToPDF(HTMLContent: String, filename:String) -> String {
         let printPageRenderer = DSRPrintPageRenderer()
         
         let printFormatter = UIMarkupTextPrintFormatter(markupText: HTMLContent)
@@ -500,7 +500,7 @@ class PDFFormComposer: NSObject {
         pdfFilename = "\(AppDelegate.getAppDelegate().getDocDir())/Report_\(filename).pdf"
         pdfData.writeToFile(pdfFilename, atomically: true)
         
-        print(pdfFilename)
+        return pdfFilename
     }
 
     

@@ -20,6 +20,16 @@ class CoachingSummary : FormViewController {
     var summary2 : String = ""
     var summary3 : String = ""
     
+    //variabel untuk print pdf
+    var Coache: String = ""
+    var Date: String = ""
+    var invoiceComposer: PDFFormComposer!
+    var csession: String = ""
+    var HTMLContent: String!
+    var pdfFilename: String!
+    var pdfposition: String!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -112,7 +122,7 @@ class CoachingSummary : FormViewController {
     }
     func savetoCoreData(cell: ButtonCellOf<String>, row: ButtonRow){
         
-        let csession = NSUserDefaults.standardUserDefaults().objectForKey(KeyLocal.coachingSession) as! String
+        self.csession = NSUserDefaults.standardUserDefaults().objectForKey(KeyLocal.coachingSession) as! String
         
         let dict = form.values()
         
@@ -133,18 +143,28 @@ class CoachingSummary : FormViewController {
         let coachingGuideline = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.coachingGuideline)
         print("guideline:",coachingGuideline)
         
+        //csession = NSUserDefaults.standardUserDefaults().objectForKey(KeyLocal.coachingSession) as! String
+        
+        
         if coachingGuideline! == "1"{
             
             self.saveQuestionData("", questionID: "dsr_summary_1",textAnswer: self.summary1,tickAnswer: false, id: csession)
             self.saveQuestionData("", questionID: "dsr_summary_2",textAnswer: self.summary2,tickAnswer: false, id: csession)
             self.saveQuestionData("", questionID: "dsr_summary_3",textAnswer: self.summary3,tickAnswer: false, id: csession)
+            
+            createDSRAsHTML()
+            pdfposition = invoiceComposer.exportHTMLContentToPDF(HTMLContent,filename: csession)
         }
         else if coachingGuideline! == "2"{
             
             self.saveQuestionData("", questionID: "fa_summary_1",textAnswer: self.summary1,tickAnswer: false, id: csession)
             self.saveQuestionData("", questionID: "fa_summary_1",textAnswer: self.summary2,tickAnswer: false, id: csession)
             self.saveQuestionData("", questionID: "fa_summary_1",textAnswer: self.summary3,tickAnswer: false, id: csession)
+            
+            createFASAAsHTML()
+            pdfposition = invoiceComposer.exportHTMLContentToPDF(HTMLContent,filename: csession)
         }
+        
 
         let connected = Reachability.isConnectedToNetwork()
         
@@ -154,6 +174,7 @@ class CoachingSummary : FormViewController {
             self.saveformtofirebase(csession)
             let notPermitted = UIAlertView(title: "Alert", message: "Laporan berhasil disimpan ke sistem", delegate: nil, cancelButtonTitle: "OK")
             notPermitted.show()
+            sendingEmail()
             
             self.performSegueWithIdentifier("summaryToProfile", sender: nil)
         }
@@ -165,6 +186,58 @@ class CoachingSummary : FormViewController {
              self.performSegueWithIdentifier("summaryToProfile", sender: nil)
         }
 
+    }
+    
+    func createFASAAsHTML() {
+        invoiceComposer = PDFFormComposer()
+        let coacheeemail1 = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.coacheemail) as String!
+        let csession1 = NSUserDefaults.standardUserDefaults().objectForKey(KeyLocal.coachingSession) as! String
+        if let invoiceHTML = invoiceComposer.renderFASA(self.Date,coachee: coacheeemail1,csession: csession1){
+            HTMLContent = invoiceHTML
+        }
+    }
+    
+    func createDSRAsHTML() {
+        invoiceComposer = PDFFormComposer()
+        let coacheeemail1 = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.coacheemail) as String!
+        let csession1 = NSUserDefaults.standardUserDefaults().objectForKey(KeyLocal.coachingSession) as! String
+        if let invoiceHTML = invoiceComposer.renderDSR(self.Date,coachee: coacheeemail1,csession: csession1){
+            HTMLContent = invoiceHTML
+        }
+    }
+    
+    func sendingEmail(){
+        //let window: UIWindow?
+        let mailComposeViewController = configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            
+            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+            
+        } else {
+            self.showSendMailErrorAlert()
+        }
+    }
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        
+        
+        mailComposerVC.setSubject("Sending report")
+        mailComposerVC.setMessageBody("This is report generated", isHTML: false)
+        
+        let coachingGuideline = NSUserDefaults.standardUserDefaults().stringForKey(KeyLocal.coachingGuideline)
+        print("email guideline:",coachingGuideline)
+        
+        if coachingGuideline! == "1" || coachingGuideline! == "2" {
+            mailComposerVC.addAttachmentData(NSData(contentsOfFile: AppDelegate.getAppDelegate().getDocDir())!, mimeType: "application/pdf", fileName: pdfposition)
+        }
+        
+        return mailComposerVC
+    }
+    
+    func showSendMailErrorAlert() {
+        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        sendMailErrorAlert.show()
     }
     
     func savecoachingtofirebase(id:String){
